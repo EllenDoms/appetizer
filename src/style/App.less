@@ -6,8 +6,10 @@ out:  App.css
 @light-3: #DEE0E2;
 @dark: #000000;
 @red: #D05C76;
+@red-dark: #B03A5E;
 
 @shadowCard: 0 0 12px 0 rgba(0,0,0,0.03);
+@shadowBtn: 0 4px 8px 0 rgba(0,0,0,0.2);
 @transition: all 0.3s ease-out;
 
 * {
@@ -40,8 +42,9 @@ h2 {
 }
 
 h3 {
+  font-family: 'Anton', sans-serif;
   font-size: 24px;
-  font-weight: bold;
+  font-weight: normal;
   color: @dark;
   letter-spacing: 1.5px;
   text-align: center;
@@ -109,16 +112,34 @@ p {
     font-weight: bold;
     letter-spacing: 1px;
   }
+  &.btn-float {
+    padding: 0px;
+    background: @red-dark;
+    color: #FFF;
+    text-align: center;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 20px;
+    font-size: 20px;
+
+    position: relative;
+    opacity: 1;
+    &:hover {
+      box-shadow: @shadowBtn;
+    }
+  }
 }
 
 .block {
   margin: 0;
   min-height: 100vh;
-  .container {
-    margin: 0 auto;
-    max-width: 900px;
-    padding: 0 6%;
-  }
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 900px;
+  padding: 0 6%;
 }
 
 #topBlock {
@@ -363,6 +384,44 @@ p {
         }
       }
 
+    }
+  }
+}
+
+#footer {
+  background-color: @red;
+  .container {
+    display: flex;
+    .column {
+      display: block;
+      margin: 30px 120px 30px 0;
+      .btn-float { top: -50px; margin-left: 19px; }
+      #logo { margin-top: -30px; width: 90px; }
+      h3 {
+        margin: 0 0 20px 0;
+        padding: 0;
+        text-align: left;
+        color: #FFF;
+      }
+      li {
+        list-style: none;
+        color: #FFF;
+        font-size: 12px;
+        line-height: 16px;
+        font-weight: normal;
+        font-smooth: antialiased;
+        a {
+          color: inherit;
+          font-size: inherit;
+          opacity: 0.7;
+          &:hover {
+            opacity: 1;
+          }
+        }
+        &.nolink {
+          opacity: 0.7;
+        }
+      }
     }
   }
 }

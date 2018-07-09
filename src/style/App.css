@@ -28,8 +28,9 @@ h2 {
   margin-bottom: 35px;
 }
 h3 {
+  font-family: 'Anton', sans-serif;
   font-size: 24px;
-  font-weight: bold;
+  font-weight: normal;
   color: #000000;
   letter-spacing: 1.5px;
   text-align: center;
@@ -101,11 +102,27 @@ p {
   font-weight: bold;
   letter-spacing: 1px;
 }
+.btn.btn-float {
+  padding: 0px;
+  background: #B03A5E;
+  color: #FFF;
+  text-align: center;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 20px;
+  font-size: 20px;
+  position: relative;
+  opacity: 1;
+}
+.btn.btn-float:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
 .block {
   margin: 0;
   min-height: 100vh;
 }
-.block .container {
+.container {
   margin: 0 auto;
   max-width: 900px;
   padding: 0 6%;
@@ -334,4 +351,47 @@ p {
 }
 #contactBlock form .formItem.radio .radioItem .value {
   margin-right: 10%;
+}
+#footer {
+  background-color: #D05C76;
+}
+#footer .container {
+  display: flex;
+}
+#footer .container .column {
+  display: block;
+  margin: 30px 120px 30px 0;
+}
+#footer .container .column .btn-float {
+  top: -50px;
+  margin-left: 19px;
+}
+#footer .container .column #logo {
+  margin-top: -30px;
+  width: 90px;
+}
+#footer .container .column h3 {
+  margin: 0 0 20px 0;
+  padding: 0;
+  text-align: left;
+  color: #FFF;
+}
+#footer .container .column li {
+  list-style: none;
+  color: #FFF;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: normal;
+  font-smooth: antialiased;
+}
+#footer .container .column li a {
+  color: inherit;
+  font-size: inherit;
+  opacity: 0.7;
+}
+#footer .container .column li a:hover {
+  opacity: 1;
+}
+#footer .container .column li.nolink {
+  opacity: 0.7;
 }

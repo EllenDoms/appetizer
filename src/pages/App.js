@@ -5,6 +5,8 @@ import ScrollableAnchor from 'react-scrollable-anchor'
 import Phases from '../components/phases';
 import ContactForm from '../components/contactForm';
 import logo from '../style/img/logo.png';
+import logoWhite from '../style/img/logoWhite.png';
+
 import coaster from '../style/img/coaster.png';
 
 class App extends Component {
@@ -40,6 +42,30 @@ class App extends Component {
             </div>
           </div>
         </ScrollableAnchor>
+        <div id="footer">
+          <div className="container">
+            <div className="column">
+              <a href='#topBlockAnchor' className="btn btn-float material-icons">arrow_upward</a>
+              <img id="logo" src={logoWhite} alt="logo" />
+            </div>
+            <div className="column">
+              <h3>Contact</h3>
+              <ul>
+                <li className="nolink">Kleine Nieuwedijkstraat 64/102, 2800 Mechelen</li>
+                <li className="nolink">info@app-etizer.be</li>
+                <li className="nolink">+32 474 88 39 33‬</li>
+              </ul>
+            </div>
+            <div className="column">
+              <h3>Follow us</h3>
+              <ul>
+                <li><a href="#">Facebook</a></li>
+                <li><a href="#">Twitter</a></li>
+                <li><a href="#">Github‬</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

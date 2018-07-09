@@ -40,6 +40,7 @@ class ContactForm extends Component {
     )
   }
   onSubmit = (values) => {
+    values.phase = this.props.phase;
     this.props.sendContactForm(values);
   }
   render() {
