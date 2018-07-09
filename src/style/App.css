@@ -396,7 +396,11 @@ p {
 #footer .container .column li.nolink {
   opacity: 0.7;
 }
+<<<<<<< HEAD
 @media only screen and (max-width: 800px) {
+=======
+@media only screen and (max-width: 415px) {
+>>>>>>> cc3319a6cf9bf1dfc8d576873a5352ea0d1f5e2c
   h2 {
     font-size: 25px;
     padding: 0 6%;
@@ -415,7 +419,11 @@ p {
     line-height: 20px;
   }
   #topBlock .vertCenter #coaster {
+<<<<<<< HEAD
     width: 60vh;
+=======
+    height: 30vh;
+>>>>>>> cc3319a6cf9bf1dfc8d576873a5352ea0d1f5e2c
     position: absolute;
     margin-left: 58vw;
     margin-top: -25px;
