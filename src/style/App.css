@@ -147,7 +147,8 @@ p {
   color: #000000;
 }
 #topBlock .vertCenter #coaster {
-  height: 50vh;
+  width: 60vw;
+  max-width: 550px;
 }
 #topBlock #greyBG {
   background: #F5F5F5;
@@ -165,7 +166,7 @@ p {
 #topBlock .bottom {
   position: absolute;
   left: 50%;
-  bottom: 60px;
+  bottom: 25px;
 }
 #topBlock .bottom .btn {
   position: relative;
@@ -360,7 +361,7 @@ p {
 }
 #footer .container .column {
   display: block;
-  margin: 30px 120px 30px 0;
+  margin: 30px 10% 30px 0;
 }
 #footer .container .column .btn-float {
   top: -50px;
@@ -394,4 +395,59 @@ p {
 }
 #footer .container .column li.nolink {
   opacity: 0.7;
+}
+@media only screen and (max-width: 800px) {
+  h2 {
+    font-size: 25px;
+    padding: 0 6%;
+  }
+  #topBlock .vertCenter .container {
+    width: 100%;
+  }
+  #topBlock .vertCenter h1 {
+    margin-top: -18%;
+    font-size: 7vw;
+    line-height: 9vw;
+  }
+  #topBlock .vertCenter .subtitle {
+    width: 50vw;
+    font-size: 14px;
+    line-height: 20px;
+  }
+  #topBlock .vertCenter #coaster {
+    width: 60vh;
+    position: absolute;
+    margin-left: 58vw;
+    margin-top: -25px;
+  }
+  #topBlock #greyBG {
+    height: 61.5vh;
+    top: 38.5vh;
+  }
+  #phasesBlock {
+    padding-top: 30px;
+  }
+  #phasesBlock h4 {
+    display: none;
+  }
+  #phasesBlock #tabcontent img {
+    display: none;
+  }
+  #phasesBlock #tabcontent .info {
+    width: 100%;
+    margin-top: 0px;
+  }
+  #footer {
+    padding-bottom: 10Px;
+  }
+  #footer .container {
+    display: block;
+  }
+  #footer .container #logo {
+    display: none;
+  }
+  #footer .container .column .btn-float {
+    top: -18px;
+    margin-left: 0px;
+  }
 }

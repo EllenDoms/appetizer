@@ -37,10 +37,6 @@ class Phases extends Component {
         >
           {key !== 1 ? <div className="line" /> : "" }
           <div className="number"><div className="innerNumber">{key}</div></div>
-          {/* <div className="illu">
-            <img src={img} alt='bottle' />
-            <img src={imgColor} className={active || done ? "color active"  : "color" } alt='bottle' />
-          </div> */}
           <h4>{phase.title}</h4>
           <div className="arrow" />
         </li>
@@ -69,7 +65,7 @@ class Phases extends Component {
     const { activePhase } = this.props;
     return (
       <div>
-        <h2>Bring your idea to life - step by step</h2>
+        <h2>Bring your idea to life, step by step</h2>
         <ul id="tabs">
           <div className="container">
             {this.renderTabs(activePhase)}
