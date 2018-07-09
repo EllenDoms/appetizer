@@ -5,41 +5,47 @@
 }
 a {
   text-decoration: none;
-  color: #22264B;
+  color: #000000;
   display: block;
 }
 h1 {
-  color: #FFF;
+  color: #000000;
   font-family: 'Anton', sans-serif;
   font-weight: normal;
-  font-size: 4vw;
-  line-height: 4.5vw;
+  font-size: 4.5vw;
+  line-height: 6vw;
   letter-spacing: 4px;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-  text-align: center;
   margin-bottom: 20px;
 }
 h2 {
   font-family: 'Anton', sans-serif;
   font-size: 3vw;
   font-weight: normal;
-  color: #22264B;
+  color: #000000;
   letter-spacing: 2.50px;
   text-align: center;
   padding-top: 40px;
   margin-bottom: 35px;
 }
 h3 {
-  font-size: 16px;
+  font-size: 24px;
   font-weight: bold;
-  color: #22264B;
+  color: #000000;
+  letter-spacing: 1.5px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+h4 {
+  font-size: 14px;
+  font-weight: bold;
+  color: #000000;
   letter-spacing: 1.5px;
   text-align: center;
   margin-bottom: 10px;
 }
 p {
   font-size: 12px;
-  color: #22264B;
+  color: #000000;
   text-align: justify;
   line-height: 20px;
 }
@@ -49,6 +55,13 @@ p {
   color: #38C3DB;
   text-align: center;
   margin-bottom: 10px;
+}
+.center {
+  text-align: center;
+}
+.turk {
+  color: #38C3DB;
+  font-family: inherit;
 }
 .hidden {
   display: none;
@@ -83,7 +96,7 @@ p {
   display: block;
 }
 .btn.btn-arrow {
-  color: #fff;
+  color: #000000;
   line-height: 25px;
   font-weight: bold;
   letter-spacing: 1px;
@@ -97,27 +110,40 @@ p {
   max-width: 900px;
   padding: 0 6%;
 }
-#topBlock {
-  background-image: url(img/bg.png);
-  background-size: cover;
-  background-position: center;
+#topBlock .vertCenter {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: -2%;
 }
-#topBlock #logo {
-  width: 140px;
-  margin-top: 10vh;
-  margin-left: calc(50% - 70px);
+#topBlock .vertCenter .container {
+  position: relative;
+  align-self: center;
 }
-#topBlock h1 {
-  padding-top: 10vh;
-}
-#topBlock .subtitle {
+#topBlock .vertCenter .container .subtitle {
   font-size: 16px;
   font-weight: normal;
   line-height: 24px;
-  color: #FFFFFF;
-  letter-spacing: 1px;
-  text-align: center;
-  text-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
+  color: #000000;
+}
+#topBlock .vertCenter #coaster {
+  height: 50vh;
+}
+#topBlock #greyBG {
+  background: #F5F5F5;
+  position: absolute;
+  width: 100vw;
+  height: 56vh;
+  top: 44vh;
+  z-index: -1;
+}
+#topBlock #logo {
+  width: 100px;
+  margin-top: 5vh;
+  margin-left: calc(50% - 50px);
 }
 #topBlock .bottom {
   position: absolute;
@@ -129,7 +155,7 @@ p {
   left: -50%;
 }
 #phasesBlock {
-  background-color: #F2F3EF;
+  background-color: #F5F5F5;
 }
 #phasesBlock #tabs {
   overflow: hidden;
@@ -152,36 +178,14 @@ p {
   height: 24px;
   line-height: 24px;
   font-weight: bold;
-  color: #22264B;
+  color: #D05C76;
   text-align: center;
-  border-radius: 20px;
-  margin: 0 auto -5px auto;
-}
-#phasesBlock #tabs li .illu {
-  position: relative;
-  z-index: 0;
-  background: #FFF;
-  border-radius: 2px;
-  width: 60px;
-  height: 60px;
+  margin: 5px auto 10px auto;
+  transition: all 0.3s ease-out;
   transform: rotate(45deg);
-  margin-left: calc(50% - 30px);
-  margin-bottom: 25px;
-  transition: all 0.3s ease-out;
 }
-#phasesBlock #tabs li .illu img {
-  position: absolute;
-  width: 64px;
+#phasesBlock #tabs li .number .innerNumber {
   transform: rotate(-45deg);
-  margin-left: -32px;
-  margin-top: 6px;
-}
-#phasesBlock #tabs li .illu img.color {
-  opacity: 0;
-  transition: all 0.3s ease-out;
-}
-#phasesBlock #tabs li .illu img.color.active {
-  opacity: 1;
 }
 #phasesBlock #tabs li h3 {
   position: relative;
@@ -190,11 +194,11 @@ p {
   transition: all 0.3s ease-out;
 }
 #phasesBlock #tabs li .line {
-  border-bottom: dashed 2px #FFF;
-  margin-left: calc(-50% + 40px);
-  margin-top: 48px;
+  border-bottom: solid 2px #FFF;
+  margin-left: calc(-50% + 12px);
+  margin-top: 16px;
   position: absolute;
-  width: calc(100% - 60px);
+  width: calc(100% - 23px);
   opacity: 0.6;
 }
 #phasesBlock #tabs li .line:after {
@@ -213,35 +217,31 @@ p {
   transform: rotate(45deg);
   margin-bottom: -24px;
   margin-left: calc(50% - 15px);
-  box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.09);
+  box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.03);
   margin-top: 15px;
-}
-#phasesBlock #tabs li.active .illu,
-#phasesBlock #tabs li.done .illu {
-  box-shadow: 0 0 15px 0 #EAECE5;
 }
 #phasesBlock #tabs li.active .line,
 #phasesBlock #tabs li.done .line {
-  border-bottom: solid 2px #FFF;
+  border-bottom: solid 2px #D05C76;
   opacity: 1;
-  box-shadow: 0 0 15px 0 #DEE2D5;
+  box-shadow: 0 0 15px 0 #DEE0E2;
 }
 #phasesBlock #tabs li:hover .number,
 #phasesBlock #tabs li.active .number,
 #phasesBlock #tabs li.done .number {
   color: #FFF;
-  background: #38C3DB;
+  background: #D05C76;
 }
 #phasesBlock #tabs li:hover {
   cursor: pointer;
 }
 #phasesBlock #tabs li:hover .illu {
-  box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.09);
+  box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.03);
 }
 #phasesBlock #tabcontent {
   padding: 25px;
   background: #FFFFFF;
-  box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.09);
+  box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.03);
 }
 #phasesBlock #tabcontent img {
   width: 100%;
@@ -256,20 +256,20 @@ p {
 #contactBlock .contactArrow {
   border-width: 85px 50vw 0 50vw;
   border-style: solid;
-  border-color: #F2F3EF transparent transparent transparent;
+  border-color: #F5F5F5 transparent transparent transparent;
 }
 #contactBlock form {
   max-width: 500px;
   margin: 40px auto;
 }
 #contactBlock form .formItem.line {
-  border-bottom: 2px solid #EAECE5;
+  border-bottom: 2px solid #EBEDEE;
   margin-bottom: 50px;
 }
 #contactBlock form .formItem label,
 #contactBlock form .formItem .value {
   width: 20%;
-  color: #22264B;
+  color: #000000;
   font-size: 14px;
 }
 #contactBlock form .formItem input {
@@ -284,7 +284,14 @@ p {
   margin-top: 4px;
   width: 100%;
   min-height: 70px;
-  border: 2px solid #EAECE5;
+  border: 2px solid #EBEDEE;
+}
+#contactBlock form .formItem .text-help {
+  color: #D05C76;
+  font-style: italic;
+  font-size: 12px;
+  float: right;
+  margin-top: 8px;
 }
 #contactBlock form .formItem.radio label {
   width: 100%;
@@ -301,7 +308,7 @@ p {
   appearance: none;
   display: inline-block;
   position: relative;
-  background-color: #EAECE5;
+  background-color: #EBEDEE;
   color: #FFF;
   top: 7px;
   height: 22px;
@@ -320,7 +327,7 @@ p {
   transform: rotate(40deg);
 }
 #contactBlock form .formItem.radio .radioItem input:hover {
-  background-color: #DEE2D5;
+  background-color: #DEE0E2;
 }
 #contactBlock form .formItem.radio .radioItem input:checked {
   background-color: #38C3DB;

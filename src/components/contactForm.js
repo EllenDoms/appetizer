@@ -9,11 +9,11 @@ class ContactForm extends Component {
     const classNames= `formItem line ${touched && error ? 'has-danger' : ''} `;
     return (
       <div className={classNames}>
+        <label>{field.label}</label>
+        <input type={type} {...field.input} ></input>
         <div className='text-help'>
           {touched ? error : ''}
         </div>
-        <label>{field.label}</label>
-        <input type={type} {...field.input} ></input>
       </div>
     )
   }
@@ -43,21 +43,31 @@ class ContactForm extends Component {
     this.props.sendContactForm(values);
   }
   render() {
-    const { handleSubmit } = this.props;
-    return (
-      <form onSubmit={handleSubmit(this.onSubmit)}>
-        <Field label='Name' name='name' type="text" component={this.renderField} />
-        <Field label='Email' name='email' type="email" component={this.renderField} />
-        <Field label='Phone' name='phone' type="text" component={this.renderField} />
-        <div className="formItem radio">
-          <label>Preferred method of communication</label>
-          <Field name='communication' type='radio' value="Phone" component={this.renderRadio} />
-          <Field name='communication' type='radio' value="Email" component={this.renderRadio} />
+    const { handleSubmit, submit, phase  } = this.props;
+    console.log(submit)
+    if(!submit) {
+      return (
+        <form onSubmit={handleSubmit(this.onSubmit)}>
+          <Field label='Name' name='name' type="text" component={this.renderField} />
+          <Field label='Email' name='email' type="email" component={this.renderField} />
+          <Field label='Phone' name='phone' type="text" component={this.renderField} />
+          <div className="formItem radio">
+            <label>Preferred method of communication</label>
+            <Field name='communication' type='radio' value="Phone" component={this.renderRadio} />
+            <Field name='communication' type='radio' value="Email" component={this.renderRadio} />
+          </div>
+          <Field label='Message' name='message' type='textarea' component={this.renderBigField} />
+          <button className="btn btn-primary center" type='submit'>Send</button>
+        </form>
+      )
+    } else {
+      return (
+        <div>
+          <p className="center">Awesome! We recieved your message and will get back to you as soon as possible!</p>
         </div>
-        <Field label='Message' name='message' type='textarea' component={this.renderBigField} />
-        <button className="btn btn-primary center" type='submit'>Send</button>
-      </form>
-    )
+      )
+    }
+
   }
 }
 
@@ -68,9 +78,17 @@ function validate(values) { //validate function will automatically be called by 
   if(!values.email) { errors.email = 'Enter an email, please'; }
   if(!values.phone) { errors.phone = 'Enter a phone number, please'; }
   if(!values.communication) { errors.communication = 'Pick one!'; }
+  if(!values.message) { errors.message = 'We need a bit more information to help.'; }
   // if errors is empty, form is fine to submit
   // if errors not empty: form is invalid
   return errors;
+}
+
+function mapStateToProps(state){
+  return {
+    phase: state.state.phase,
+    submit: state.state.submit
+  };
 }
 
 export default reduxForm({
@@ -78,5 +96,5 @@ export default reduxForm({
   form: 'ContactForm',
   initialValues: { communication: "Phone" }
 })(
-  connect(null, { sendContactForm }) (ContactForm) //combine reduxForm and connect
+  connect(mapStateToProps, { sendContactForm }) (ContactForm) //combine reduxForm and connect
 );

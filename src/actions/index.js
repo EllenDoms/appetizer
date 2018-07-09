@@ -1,4 +1,4 @@
-import { SET_PHASE } from './types';
+import { SET_PHASE, SET_SUBMIT } from './types';
 
 import { databaseContactForm } from "../config/firebase";
 
@@ -11,6 +11,10 @@ export function setActivePhase(phase) {
 
 export function sendContactForm(values) {
   return databaseContactForm.push(values)
-  .then(data => console.log(values, data))
+  .then(data => {
+    return {
+      type: SET_SUBMIT
+    }
+  })
   .catch(error => console.log('BAD', error))
 }

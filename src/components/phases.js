@@ -17,7 +17,7 @@ const phases = [
     accent: "6 weeks - € ...",
     text: "The first profitable version of your application will be launched, with only the most needed features."},
   { title: 'Go to market',
-    h3: "Everything",
+    h3: "I want it all",
     accent: "Custom",
     text: "A product is never finished. After the first launch we add additional features or tweak existing ones."}];
 
@@ -36,12 +36,12 @@ class Phases extends Component {
           onClick={() => {this.props.setActivePhase(key)}}
         >
           {key !== 1 ? <div className="line" /> : "" }
-          <div className="number">{key}</div>
-          <div className="illu">
+          <div className="number"><div className="innerNumber">{key}</div></div>
+          {/* <div className="illu">
             <img src={img} alt='bottle' />
             <img src={imgColor} className={active || done ? "color active"  : "color" } alt='bottle' />
-          </div>
-          <h3>{phase.title}</h3>
+          </div> */}
+          <h4>{phase.title}</h4>
           <div className="arrow" />
         </li>
       )
@@ -68,13 +68,17 @@ class Phases extends Component {
   render() {
     const { activePhase } = this.props;
     return (
-      <div className="container">
+      <div>
         <h2>Bring your idea to life - step by step</h2>
         <ul id="tabs">
-          {this.renderTabs(activePhase)}
+          <div className="container">
+            {this.renderTabs(activePhase)}
+          </div>
         </ul>
         <div id="tabcontent">
-          {this.renderTabContent(activePhase)}
+          <div className="container">
+            {this.renderTabContent(activePhase)}
+          </div>
         </div>
       </div>
     )
@@ -82,7 +86,7 @@ class Phases extends Component {
 }
 
 function mapStateToProps(state){
-  return { activePhase: state.phases.phase};
+  return { activePhase: state.state.phase};
 }
 
 export default connect(mapStateToProps, {setActivePhase})(Phases);
