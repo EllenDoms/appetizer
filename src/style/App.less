@@ -12,6 +12,9 @@ out:  App.css
 @shadowBtn: 0 4px 8px 0 rgba(0,0,0,0.2);
 @transition: all 0.3s ease-out;
 
+@tabletscreen: ~"only screen and (max-width: 600px)";
+@mobilescreen: ~"only screen and (max-width: 415px)";
+
 * {
   padding: 0;
   margin: 0;
@@ -179,7 +182,7 @@ p {
   .bottom {
     position: absolute;
     left: 50%;
-    bottom: 60px;
+    bottom: 25px;
     .btn {
       position: relative;
       left: -50%;
@@ -421,6 +424,57 @@ p {
         &.nolink {
           opacity: 0.7;
         }
+      }
+    }
+  }
+}
+
+@media @mobilescreen {
+  h2 { font-size: 25px; padding: 0 6%; } //padding container
+  #topBlock {
+    .vertCenter {
+      .container { width: 100%; }
+      h1 {
+        margin-top: -18%;
+        font-size: 7vw;
+        line-height: 9vw;
+      }
+    .subtitle {
+       width: 50vw;
+       font-size: 14px;
+       line-height: 20px;
+    }
+    #coaster {
+      height: 30vh;
+      position: absolute;
+      margin-left: 58vw;
+      margin-top: -25px;
+    }
+    }
+    #greyBG {
+      height: 61.5vh;
+      top: 38.5vh;
+    }
+  }
+  #phasesBlock {
+    padding-top: 30px;
+    h4 { display: none; }
+    #tabcontent {
+      img { display: none; }
+      .info {
+        width: 100%;
+        margin-top: 0px;
+      }
+    }
+  }
+  #footer {
+    padding-bottom: 10Px;
+    .container {
+      display: block;
+      #logo { display: none; }
+      .column .btn-float {
+        top: -18px;
+        margin-left: 0px;
       }
     }
   }
