@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import '../style/App.css';
 import ScrollableAnchor from 'react-scrollable-anchor'
 
+import Targets from '../components/targets';
 import Phases from '../components/phases';
 import ContactForm from '../components/contactForm';
 import logo from '../style/img/logo.png';
@@ -22,15 +23,26 @@ class App extends Component {
                 <div className="subtitle">Got a wicked idea? <br /> We help you kickstart your application. </div>
               </div>
               <img id="coaster" src={coaster} alt="beer coaster with idea" />
-              <div className="bottom"><a href='#phasesBlockAnchor' className="btn btn-secondary btn-arrow">Start today<div className="material-icons">arrow_downward</div></a></div>
+              <div className="bottom"><a href='#targetsBlockAnchor' className="btn btn-secondary btn-arrow">Start today<div className="material-icons">arrow_downward</div></a></div>
             </div>
             <div id="greyBG" />
-
+          </div>
+        </ScrollableAnchor>
+        <ScrollableAnchor id="targetsBlockAnchor">
+          <div id="targetsBlock" className="block light">
+            <Targets />
+            <div className="bottom"><a href='#servicesBlockAnchor' className="btn btn-secondary btn-arrow">Cool, but how does it work?<div className="material-icons">arrow_downward</div></a></div>
           </div>
         </ScrollableAnchor>
         <ScrollableAnchor id="phasesBlockAnchor">
           <div id="phasesBlock" className="block light">
             <Phases />
+          </div>
+        </ScrollableAnchor>
+        <ScrollableAnchor id="servicesBlockAnchor">
+          <div id="servicesBlock" className="block light">
+            <Targets />
+            <div className="bottom"><a href='#contactBlockAnchor' className="btn btn-secondary btn-arrow">Cool, but how does it work?<div className="material-icons">arrow_downward</div></a></div>
           </div>
         </ScrollableAnchor>
         <ScrollableAnchor id="contactBlockAnchor">

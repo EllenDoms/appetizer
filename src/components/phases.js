@@ -54,8 +54,7 @@ class Phases extends Component {
             <h3>{phases[i].h3}</h3>
             <div className="accent">{phases[i].accent}</div>
             <p>{phases[i].text}</p>
-            <div className="bottom"><a href='#contactBlockAnchor' className="btn btn-primary">More information</a></div>
-
+            <a href='#contactBlockAnchor' className="btn btn-primary">More information</a>
           </div>
         </div>
       )

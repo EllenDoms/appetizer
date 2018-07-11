@@ -121,11 +121,24 @@ p {
 .block {
   margin: 0;
   min-height: 100vh;
+  position: relative;
+}
+.light {
+  background-color: #F5F5F5;
 }
 .container {
   margin: 0 auto;
   max-width: 900px;
   padding: 0 6%;
+}
+.bottom {
+  position: absolute;
+  left: 50%;
+  bottom: 7vh;
+}
+.bottom .btn {
+  position: relative;
+  left: -50%;
 }
 #topBlock .vertCenter {
   position: absolute;
@@ -139,6 +152,7 @@ p {
 #topBlock .vertCenter .container {
   position: relative;
   align-self: center;
+  margin: 0;
 }
 #topBlock .vertCenter .container .subtitle {
   font-size: 16px;
@@ -148,7 +162,7 @@ p {
 }
 #topBlock .vertCenter #coaster {
   width: 60vw;
-  max-width: 550px;
+  max-width: 350px;
 }
 #topBlock #greyBG {
   background: #F5F5F5;
@@ -163,17 +177,21 @@ p {
   margin-top: 5vh;
   margin-left: calc(50% - 50px);
 }
-#topBlock .bottom {
-  position: absolute;
-  left: 50%;
-  bottom: 25px;
+#targetsBlock .container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 12vh;
 }
-#topBlock .bottom .btn {
-  position: relative;
-  left: -50%;
+#targetsBlock .container .target {
+  width: 30%;
 }
-#phasesBlock {
-  background-color: #F5F5F5;
+#targetsBlock .container .target img {
+  width: 50%;
+  display: block;
+  margin: 0 auto 20px auto;
+}
+#targetsBlock .container .target h4 {
+  margin-bottom: 20px;
 }
 #phasesBlock #tabs {
   overflow: hidden;
@@ -396,11 +414,7 @@ p {
 #footer .container .column li.nolink {
   opacity: 0.7;
 }
-<<<<<<< HEAD
 @media only screen and (max-width: 800px) {
-=======
-@media only screen and (max-width: 415px) {
->>>>>>> cc3319a6cf9bf1dfc8d576873a5352ea0d1f5e2c
   h2 {
     font-size: 25px;
     padding: 0 6%;
@@ -419,11 +433,7 @@ p {
     line-height: 20px;
   }
   #topBlock .vertCenter #coaster {
-<<<<<<< HEAD
     width: 60vh;
-=======
-    height: 30vh;
->>>>>>> cc3319a6cf9bf1dfc8d576873a5352ea0d1f5e2c
     position: absolute;
     margin-left: 58vw;
     margin-top: -25px;
