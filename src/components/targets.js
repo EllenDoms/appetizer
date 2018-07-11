@@ -13,7 +13,7 @@ const targets = [
     text: "Time is money! With a clear goal in mind you’ll have results in a minimum amount of time!"},
 ]
 
-export default class Phases extends Component {
+export default class Targets extends Component {
   renderTargets() {
     return targets.map((target, i) => {
       const img = require(`../style/img/target${i + 1}.png`);

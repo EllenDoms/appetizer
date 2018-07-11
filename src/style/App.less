@@ -10,6 +10,7 @@ out:  App.css
 
 @shadowCard: 0 0 12px 0 rgba(0,0,0,0.03);
 @shadowBtn: 0 4px 8px 0 rgba(0,0,0,0.2);
+@shadowCoaster: 0 3px 25px 0 rgba(0, 0, 0, 0.2);
 @transition: all 0.3s ease-out;
 
 @tabletscreen: ~"only screen and (max-width: 800px)";
@@ -152,11 +153,23 @@ p {
 .bottom {
   position: absolute;
   left: 50%;
-  bottom: 7vh;
+  bottom: 4vh;
   .btn {
     position: relative;
     left: -50%;
   }
+}
+
+.coasterSmall {
+  color: #FFF;
+  padding: 12px;
+  border-radius: 25px;
+  font-size: 16px;
+  margin: 10px auto 20px auto;
+  display: block;
+  width: fit-content;
+  border: solid 3px #fff;
+  box-shadow: @shadowCoaster;
 }
 
 #topBlock {
@@ -328,6 +341,23 @@ p {
       margin: -140px auto 0px auto;
       text-align: center;
       min-height: 165px;
+    }
+  }
+}
+
+#servicesBlock {
+  .container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 4vh;
+    flex-wrap: wrap;
+    .service {
+      height: 24vh;
+      width: 24%;
+      background-color: #FFF;
+      box-shadow: @shadowCard;
+      margin-bottom: 4%;
+      padding: 3%;
     }
   }
 }

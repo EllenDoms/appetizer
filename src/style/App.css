@@ -134,11 +134,22 @@ p {
 .bottom {
   position: absolute;
   left: 50%;
-  bottom: 7vh;
+  bottom: 4vh;
 }
 .bottom .btn {
   position: relative;
   left: -50%;
+}
+.coasterSmall {
+  color: #FFF;
+  padding: 12px;
+  border-radius: 25px;
+  font-size: 16px;
+  margin: 10px auto 20px auto;
+  display: block;
+  width: fit-content;
+  border: solid 3px #fff;
+  box-shadow: 0 3px 25px 0 rgba(0, 0, 0, 0.2);
 }
 #topBlock .vertCenter {
   position: absolute;
@@ -288,6 +299,20 @@ p {
   margin: -140px auto 0px auto;
   text-align: center;
   min-height: 165px;
+}
+#servicesBlock .container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 4vh;
+  flex-wrap: wrap;
+}
+#servicesBlock .container .service {
+  height: 24vh;
+  width: 24%;
+  background-color: #FFF;
+  box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.03);
+  margin-bottom: 4%;
+  padding: 3%;
 }
 #contactBlock .contactArrow {
   border-width: 85px 50vw 0 50vw;

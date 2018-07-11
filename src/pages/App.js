@@ -4,6 +4,7 @@ import ScrollableAnchor from 'react-scrollable-anchor'
 
 import Targets from '../components/targets';
 import Phases from '../components/phases';
+import Services from '../components/services';
 import ContactForm from '../components/contactForm';
 import logo from '../style/img/logo.png';
 import logoWhite from '../style/img/logoWhite.png';
@@ -31,7 +32,7 @@ class App extends Component {
         <ScrollableAnchor id="targetsBlockAnchor">
           <div id="targetsBlock" className="block light">
             <Targets />
-            <div className="bottom"><a href='#servicesBlockAnchor' className="btn btn-secondary btn-arrow">Cool, but how does it work?<div className="material-icons">arrow_downward</div></a></div>
+            <div className="bottom"><a href='#phasesBlockAnchor' className="btn btn-secondary btn-arrow">Cool, but how does it work?<div className="material-icons">arrow_downward</div></a></div>
           </div>
         </ScrollableAnchor>
         <ScrollableAnchor id="phasesBlockAnchor">
@@ -41,8 +42,8 @@ class App extends Component {
         </ScrollableAnchor>
         <ScrollableAnchor id="servicesBlockAnchor">
           <div id="servicesBlock" className="block light">
-            <Targets />
-            <div className="bottom"><a href='#contactBlockAnchor' className="btn btn-secondary btn-arrow">Cool, but how does it work?<div className="material-icons">arrow_downward</div></a></div>
+            <Services />
+            <div className="bottom"><a href='#contactBlockAnchor' className="btn btn-secondary btn-arrow">What does it cost?<div className="material-icons">arrow_downward</div></a></div>
           </div>
         </ScrollableAnchor>
         <ScrollableAnchor id="contactBlockAnchor">
