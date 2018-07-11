@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 
 const targets = [
   { h3: "Skill",
@@ -16,7 +15,7 @@ const targets = [
 export default class Targets extends Component {
   renderTargets() {
     return targets.map((target, i) => {
-      const img = require(`../style/img/target${i + 1}.png`);
+      const img = require(`../style/img/targets/target${i + 1}.png`);
       return(
         <div key={i} className="target">
           <img src={img} alt='target' />

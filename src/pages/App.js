@@ -5,6 +5,7 @@ import ScrollableAnchor from 'react-scrollable-anchor'
 import Targets from '../components/targets';
 import Phases from '../components/phases';
 import Services from '../components/services';
+import Pricing from '../components/pricing';
 import ContactForm from '../components/contactForm';
 import logo from '../style/img/logo.png';
 import logoWhite from '../style/img/logoWhite.png';
@@ -43,7 +44,13 @@ class App extends Component {
         <ScrollableAnchor id="servicesBlockAnchor">
           <div id="servicesBlock" className="block light">
             <Services />
-            <div className="bottom"><a href='#contactBlockAnchor' className="btn btn-secondary btn-arrow">What does it cost?<div className="material-icons">arrow_downward</div></a></div>
+            <div className="bottom"><a href='#pricingBlockAnchor' className="btn btn-secondary btn-arrow">What does it cost?<div className="material-icons">arrow_downward</div></a></div>
+          </div>
+        </ScrollableAnchor>
+        <ScrollableAnchor id="pricingBlockAnchor">
+          <div id="pricingBlock" className="block light">
+            <Pricing />
+            <div className="bottom"><a href='#contactBlockAnchor' className="btn btn-secondary btn-arrow">This is what I need!<div className="material-icons">arrow_downward</div></a></div>
           </div>
         </ScrollableAnchor>
         <ScrollableAnchor id="contactBlockAnchor">

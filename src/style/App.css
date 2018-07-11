@@ -44,7 +44,8 @@ h4 {
   text-align: center;
   margin-bottom: 10px;
 }
-p {
+p,
+li {
   font-size: 12px;
   color: #000000;
   text-align: justify;
@@ -56,6 +57,9 @@ p {
   color: #38C3DB;
   text-align: center;
   margin-bottom: 10px;
+}
+.italic {
+  font-style: italic;
 }
 .center {
   text-align: center;
@@ -151,6 +155,21 @@ p {
   border: solid 3px #fff;
   box-shadow: 0 3px 25px 0 rgba(0, 0, 0, 0.2);
 }
+.rhomboid {
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  margin-left: -34px;
+  background: red;
+  transform: rotate(45deg);
+}
+.rhomboid .inner {
+  transform: rotate(-45deg);
+  font-size: 14Px;
+  line-height: 26px;
+  width: 26px;
+  text-align: center;
+}
 #topBlock .vertCenter {
   position: absolute;
   width: 100%;
@@ -216,23 +235,15 @@ p {
   float: left;
   display: block;
 }
-#phasesBlock #tabs li .number {
+#phasesBlock #tabs li .rhomboid {
   position: relative;
   z-index: 1;
   background: #FFFFFF;
-  font-size: 14px;
-  width: 24px;
-  height: 24px;
-  line-height: 24px;
   font-weight: bold;
   color: #D05C76;
   text-align: center;
   margin: 5px auto 10px auto;
   transition: all 0.3s ease-out;
-  transform: rotate(45deg);
-}
-#phasesBlock #tabs li .number .innerNumber {
-  transform: rotate(-45deg);
 }
 #phasesBlock #tabs li h3 {
   position: relative;
@@ -243,7 +254,7 @@ p {
 #phasesBlock #tabs li .line {
   border-bottom: solid 2px #FFF;
   margin-left: calc(-50% + 12px);
-  margin-top: 16px;
+  margin-top: 17px;
   position: absolute;
   width: calc(100% - 23px);
   opacity: 0.6;
@@ -273,9 +284,9 @@ p {
   opacity: 1;
   box-shadow: 0 0 15px 0 #DEE0E2;
 }
-#phasesBlock #tabs li:hover .number,
-#phasesBlock #tabs li.active .number,
-#phasesBlock #tabs li.done .number {
+#phasesBlock #tabs li:hover .rhomboid,
+#phasesBlock #tabs li.active .rhomboid,
+#phasesBlock #tabs li.done .rhomboid {
   color: #FFF;
   background: #D05C76;
 }
@@ -289,6 +300,7 @@ p {
   padding: 25px;
   background: #FFFFFF;
   box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.03);
+  height: calc(100vh - 275px);
 }
 #phasesBlock #tabcontent img {
   width: 100%;
@@ -313,6 +325,59 @@ p {
   box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.03);
   margin-bottom: 4%;
   padding: 3%;
+}
+#pricingBlock .container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 7vh;
+}
+#pricingBlock .container .price {
+  width: 22%;
+  height: 62vh;
+  border: 4px solid #FFFFFF;
+  position: relative;
+}
+#pricingBlock .container .price .rhomboid {
+  background-color: #D05C76;
+  color: #FFF;
+  margin-left: -17px;
+  margin-top: 28px;
+}
+#pricingBlock .container .price .image {
+  background-color: #FFF;
+}
+#pricingBlock .container .price .image img {
+  margin: 0px auto 20px auto;
+  padding: 10px;
+  display: block;
+  height: 70px;
+}
+#pricingBlock .container .price .content {
+  padding: 0px 20px;
+}
+#pricingBlock .container .price .content li {
+  list-style: none;
+  line-height: 20px;
+  margin: 2px 0px 2px 18px;
+}
+#pricingBlock .container .price .content li .icon {
+  font-size: 14px;
+  padding-top: 2px;
+  margin-left: -18px;
+  position: absolute;
+}
+#pricingBlock .container .price .content .pricing {
+  position: absolute;
+  bottom: 20px;
+  width: calc(100% - 40px);
+}
+#pricingBlock .container .price .content .pricing p {
+  text-align: center;
+  font-size: 12px;
+  line-height: 14px;
+}
+#pricingBlock .container .price .content .pricing p.accent {
+  font-size: 14px;
 }
 #contactBlock .contactArrow {
   border-width: 85px 50vw 0 50vw;

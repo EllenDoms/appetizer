@@ -6,15 +6,15 @@ import { setActivePhase } from '../actions';
 const phases = [
   { title: 'A clear idea',
     h3: "A kickass pitch!",
-    accent: "3 days - € ...",
+    accent: "3 days",
     text: "Explaining your idea in a clear way is the first step to attract the right investor or partner."},
   { title: 'Prototype',
     h3: "Test your idea",
-    accent: "3 weeks - € ...",
+    accent: "3 weeks",
     text: "Test if your concept resonates with the target audience. Only the essentials are built."},
   { title: 'Early launch',
     h3: "Minimum viable",
-    accent: "6 weeks - € ...",
+    accent: "6 weeks",
     text: "The first profitable version of your application will be launched, with only the most needed features."},
   { title: 'Go to market',
     h3: "I want it all",
@@ -25,8 +25,6 @@ class Phases extends Component {
   renderTabs(activePhase) {
     return phases.map((phase, i) => {
       const key = i + 1;
-      const img = require(`../style/img/sliced/bottle${key}-grey.png`);
-      const imgColor = require(`../style/img/sliced/bottle${key}-color.png`);
       const active = (key === activePhase);
       const done = (key < activePhase);
       return (
@@ -36,7 +34,7 @@ class Phases extends Component {
           onClick={() => {this.props.setActivePhase(key)}}
         >
           {key !== 1 ? <div className="line" /> : "" }
-          <div className="number"><div className="innerNumber">{key}</div></div>
+          <div className="rhomboid"><div className="inner">{key}</div></div>
           <h4>{phase.title}</h4>
           <div className="arrow" />
         </li>
@@ -46,15 +44,14 @@ class Phases extends Component {
   renderTabContent(activePhase) {
     return phases.map((phase, i) => {
       const key = i + 1;
-      const img = require(`../style/img/step${key}.png`);
+      const img = require(`../style/img/steps/step${key}.png`);
       return (
         <div key={key} className={key === activePhase ? "visible" : "hidden" }>
           <img src={img} alt='app development phase' />
           <div className="info">
-            <h3>{phases[i].h3}</h3>
-            <div className="accent">{phases[i].accent}</div>
-            <p>{phases[i].text}</p>
-            <a href='#servicesBlockAnchor' className="btn btn-primary">More information</a>
+            <h3>{phase.h3}</h3>
+            <div className="accent">{phase.accent}</div>
+            <p>{phase.text}</p>
           </div>
         </div>
       )
@@ -74,6 +71,8 @@ class Phases extends Component {
           <div className="container">
             {this.renderTabContent(activePhase)}
           </div>
+          <div className="bottom"><a href='#servicesBlockAnchor' className="btn btn-secondary btn-arrow">Tell me more!<div className="material-icons">arrow_downward</div></a></div>
+          
         </div>
       </div>
     )

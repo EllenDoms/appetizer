@@ -45,7 +45,6 @@ class ContactForm extends Component {
   }
   render() {
     const { handleSubmit, submit, phase  } = this.props;
-    console.log(submit)
     if(!submit) {
       return (
         <form onSubmit={handleSubmit(this.onSubmit)}>
