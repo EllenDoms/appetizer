@@ -80,7 +80,6 @@ class App extends Component {
                 <div className="column">
                   <h3>Contact</h3>
                   <ul>
-                    <li className="nolink">info@app-etizer.be</li>
                     <li className="nolink">+32 474 88 39 33‬</li>
                   </ul>
                 </div>
