@@ -24,8 +24,8 @@ h2 {
   color: #000000;
   letter-spacing: 2.50px;
   text-align: center;
-  padding-top: 40px;
-  margin-bottom: 35px;
+  padding-top: 3vh;
+  margin-bottom: 30px;
 }
 h3 {
   font-family: 'Anton', sans-serif;
@@ -48,8 +48,11 @@ p,
 li {
   font-size: 12px;
   color: #000000;
-  text-align: justify;
+  text-align: center;
   line-height: 20px;
+}
+li {
+  text-align: left;
 }
 .accent {
   font-weight: bold;
@@ -57,6 +60,9 @@ li {
   color: #38C3DB;
   text-align: center;
   margin-bottom: 10px;
+}
+.left {
+  text-align: left;
 }
 .italic {
   font-style: italic;
@@ -126,6 +132,26 @@ li {
   margin: 0;
   min-height: 100vh;
   position: relative;
+  overflow-x: hidden;
+}
+.block .topArrow {
+  border-width: 60px 50vw 0 50vw;
+  border-style: solid;
+  border-color: #F5F5F5 transparent transparent transparent;
+}
+.block .bottomArrow {
+  border-width: 0px 50vw 160px 50vw;
+  border-style: solid;
+  border-color: transparent transparent #F5F5F5 transparent;
+  position: absolute;
+  bottom: 0;
+  z-index: -1;
+}
+.block .bottomArrow.left {
+  left: -50%;
+}
+.block .bottomArrow.right {
+  right: -50%;
 }
 .light {
   background-color: #F5F5F5;
@@ -135,14 +161,20 @@ li {
   max-width: 900px;
   padding: 0 6%;
 }
+.container.flex {
+  display: flex;
+  justify-content: space-between;
+}
 .bottom {
   position: absolute;
-  left: 50%;
-  bottom: 4vh;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
 }
 .bottom .btn {
+  bottom: 2vh;
   position: relative;
-  left: -50%;
 }
 .coasterSmall {
   color: #FFF;
@@ -170,6 +202,9 @@ li {
   width: 26px;
   text-align: center;
 }
+#topBlock {
+  background-color: #F5F5F5;
+}
 #topBlock .vertCenter {
   position: absolute;
   width: 100%;
@@ -177,7 +212,7 @@ li {
   display: flex;
   align-items: center;
   justify-content: center;
-  top: -2%;
+  top: 0;
 }
 #topBlock .vertCenter .container {
   position: relative;
@@ -194,13 +229,8 @@ li {
   width: 60vw;
   max-width: 350px;
 }
-#topBlock #greyBG {
-  background: #F5F5F5;
-  position: absolute;
-  width: 100vw;
-  height: 56vh;
-  top: 44vh;
-  z-index: -1;
+#topBlock .bottomArrow {
+  border-color: transparent transparent #FFF transparent;
 }
 #topBlock #logo {
   width: 100px;
@@ -208,9 +238,7 @@ li {
   margin-left: calc(50% - 50px);
 }
 #targetsBlock .container {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 12vh;
+  margin-top: 10vh;
 }
 #targetsBlock .container .target {
   width: 30%;
@@ -300,7 +328,7 @@ li {
   padding: 25px;
   background: #FFFFFF;
   box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.03);
-  height: calc(100vh - 275px);
+  height: calc(100vh - 240px);
 }
 #phasesBlock #tabcontent img {
   width: 100%;
@@ -313,12 +341,10 @@ li {
   min-height: 165px;
 }
 #servicesBlock .container {
-  display: flex;
-  justify-content: space-between;
   margin-top: 4vh;
   flex-wrap: wrap;
 }
-#servicesBlock .container .service {
+#servicesBlock .container .item {
   height: 24vh;
   width: 24%;
   background-color: #FFF;
@@ -326,71 +352,75 @@ li {
   margin-bottom: 4%;
   padding: 3%;
 }
-#pricingBlock .container {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 7vh;
-}
-#pricingBlock .container .price {
-  width: 22%;
-  height: 62vh;
+#pricingBlock .container .item {
+  width: 18%;
   border: 4px solid #FFFFFF;
   position: relative;
+  display: flex;
+  flex-direction: column;
 }
-#pricingBlock .container .price .rhomboid {
+#pricingBlock .container .item .rhomboid {
   background-color: #D05C76;
   color: #FFF;
   margin-left: -17px;
   margin-top: 28px;
 }
-#pricingBlock .container .price .image {
+#pricingBlock .container .item .image {
   background-color: #FFF;
+  height: 90px;
 }
-#pricingBlock .container .price .image img {
+#pricingBlock .container .item .image img {
   margin: 0px auto 20px auto;
   padding: 10px;
   display: block;
   height: 70px;
 }
-#pricingBlock .container .price .content {
-  padding: 0px 20px;
+#pricingBlock .container .item h4 {
+  margin-top: 15px;
 }
-#pricingBlock .container .price .content li {
+#pricingBlock .container .item .content {
+  padding: 0px 10px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+#pricingBlock .container .item .content ul {
+  margin-top: 14px;
+}
+#pricingBlock .container .item .content ul li {
   list-style: none;
   line-height: 20px;
   margin: 2px 0px 2px 18px;
 }
-#pricingBlock .container .price .content li .icon {
+#pricingBlock .container .item .content ul li .icon {
   font-size: 14px;
   padding-top: 2px;
   margin-left: -18px;
   position: absolute;
 }
-#pricingBlock .container .price .content .pricing {
-  position: absolute;
-  bottom: 20px;
-  width: calc(100% - 40px);
+#pricingBlock .container .item .content .pricing {
+  margin-top: auto;
+  margin-bottom: 15px;
+  padding-top: 15px;
 }
-#pricingBlock .container .price .content .pricing p {
+#pricingBlock .container .item .content .pricing p {
   text-align: center;
   font-size: 12px;
   line-height: 14px;
 }
-#pricingBlock .container .price .content .pricing p.accent {
+#pricingBlock .container .item .content .pricing p.accent {
   font-size: 14px;
 }
-#contactBlock .contactArrow {
-  border-width: 85px 50vw 0 50vw;
-  border-style: solid;
-  border-color: #F5F5F5 transparent transparent transparent;
+#contactBlock h2 {
+  padding-top: 25px;
 }
 #contactBlock form {
   max-width: 500px;
-  margin: 40px auto;
+  margin: 15px auto 25px auto;
 }
 #contactBlock form .formItem.line {
   border-bottom: 2px solid #EBEDEE;
-  margin-bottom: 50px;
+  margin-bottom: 35px;
 }
 #contactBlock form .formItem label,
 #contactBlock form .formItem .value {
@@ -464,8 +494,8 @@ li {
 #footer {
   background-color: #D05C76;
 }
-#footer .container {
-  display: flex;
+#footer .container.flex {
+  justify-content: flex-start;
 }
 #footer .container .column {
   display: block;
@@ -506,11 +536,25 @@ li {
 }
 @media only screen and (max-width: 800px) {
   h2 {
-    font-size: 25px;
-    padding: 0 6%;
+    padding: 30px 12% 0px 12%;
+    font-size: 4vw;
+  }
+  .bottom.unfixTablet {
+    position: relative;
+    bottom: auto;
+    margin-top: 40px;
+  }
+  .bottom.unfixTablet .btn {
+    position: relative;
+    bottom: 0;
+  }
+  .bottom.unfixTablet .bottomArrow.left,
+  .bottom.unfixTablet .bottomArrow.right {
+    border-width: 0px 50vw 80px 50vw;
   }
   #topBlock .vertCenter .container {
     width: 100%;
+    padding: 0 12%;
   }
   #topBlock .vertCenter h1 {
     margin-top: -18%;
@@ -525,12 +569,15 @@ li {
   #topBlock .vertCenter #coaster {
     width: 60vh;
     position: absolute;
-    margin-left: 58vw;
-    margin-top: -25px;
+    margin-left: 36vw;
+    margin-top: -35px;
   }
-  #topBlock #greyBG {
-    height: 61.5vh;
-    top: 38.5vh;
+  #topBlock .bottom {
+    position: absolute;
+    bottom: 0;
+  }
+  #topBlock .bottom .btn {
+    bottom: 4vh;
   }
   #phasesBlock {
     padding-top: 30px;
@@ -538,15 +585,24 @@ li {
   #phasesBlock h4 {
     display: none;
   }
-  #phasesBlock #tabcontent img {
-    display: none;
+  #phasesBlock #tabcontent .container {
+    margin-top: 10vh;
   }
   #phasesBlock #tabcontent .info {
     width: 100%;
     margin-top: 0px;
   }
+  #servicesBlock .container .item {
+    padding: 6%;
+    width: 36%;
+    height: 36%;
+  }
   #footer {
     padding-bottom: 10Px;
+    position: absolute;
+    display: block;
+    width: 100%;
+    bottom: 0;
   }
   #footer .container {
     display: block;
@@ -557,5 +613,77 @@ li {
   #footer .container .column .btn-float {
     top: -18px;
     margin-left: 0px;
+  }
+}
+@media only screen and (max-width: 415px) {
+  h2 {
+    font-size: 7vw;
+  }
+  .bottom .btn {
+    position: relative;
+    visibility: hidden;
+  }
+  .bottom.unfixMobile {
+    position: relative;
+    bottom: auto;
+    margin-top: 40px;
+  }
+  .bottom.unfixMobile .bottomArrow.left,
+  .bottom.unfixMobile .bottomArrow.right {
+    border-width: 0px 50vw 80px 50vw;
+  }
+  .container.unfixMobile {
+    display: block;
+  }
+  .container.unfixMobile .item {
+    width: auto !important ;
+  }
+  #topBlock {
+    min-height: 100vh;
+  }
+  #topBlock .vertCenter #coaster {
+    width: 30vh;
+    position: absolute;
+    margin-left: 49vw;
+    margin-top: -35px;
+  }
+  #topBlock .bottom .btn {
+    visibility: visible;
+  }
+  #targetsBlock .container {
+    display: block;
+  }
+  #targetsBlock .container .target {
+    width: auto;
+  }
+  #servicesBlock .container {
+    display: block;
+  }
+  #servicesBlock .container .item {
+    padding: 6%;
+    width: auto;
+  }
+  #phasesBlock #tabcontent {
+    display: flex;
+    height: calc(100vh - 250px);
+  }
+  #phasesBlock #tabcontent .container {
+    align-self: center;
+    margin-top: 0;
+  }
+  #phasesBlock #tabcontent img {
+    display: none;
+  }
+  #pricingBlock .container .item {
+    height: fit-content;
+    margin-bottom: 20px;
+  }
+  #pricingBlock .container .item .pricing {
+    position: relative !important;
+    margin: 20px auto;
+    bottom: 0 !important;
+  }
+  #contactBlock #footer {
+    position: relative;
   }
 }

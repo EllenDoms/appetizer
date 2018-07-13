@@ -71,8 +71,9 @@ class Phases extends Component {
           <div className="container">
             {this.renderTabContent(activePhase)}
           </div>
-          <div className="bottom"><a href='#servicesBlockAnchor' className="btn btn-secondary btn-arrow">Tell me more!<div className="material-icons">arrow_downward</div></a></div>
-          
+          <div className="bottom">
+            <a href='#servicesBlockAnchor' className="btn btn-secondary btn-arrow">Tell me more!<div className="material-icons">arrow_downward</div></a>
+        </div>
         </div>
       </div>
     )

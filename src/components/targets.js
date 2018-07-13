@@ -30,7 +30,7 @@ export default class Targets extends Component {
     return(
       <div>
         <h2>We know what’s important</h2>
-        <div className="container">
+        <div className="container flex">
           {this.renderTargets()}
         </div>
       </div>

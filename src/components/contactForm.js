@@ -65,6 +65,7 @@ class ContactForm extends Component {
         <div>
           <p className="center">Awesome! We recieved your message and will get back to you as soon as possible!</p>
         </div>
+        
       )
     }
 

@@ -31,7 +31,7 @@ export default class Services extends Component {
   renderServices() {
     return services.map((service, i) => {
       return(
-        <div key={i} className="service card">
+        <div key={i} className="card item">
           <div className="coasterSmall material-icons" style={{backgroundColor: service.color}}>{service.icon}</div>
           <h4>{service.h4}</h4>
           <p>{service.text}</p>
@@ -43,7 +43,7 @@ export default class Services extends Component {
     return(
       <div>
         <h2>Our services</h2>
-        <div className="container">
+        <div className="container flex">
           {this.renderServices()}
         </div>
       </div>
