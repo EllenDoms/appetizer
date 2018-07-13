@@ -41,8 +41,8 @@ h2 {
   color: @dark;
   letter-spacing: 2.50px;
   text-align: center;
-  padding-top: 40px;
-  margin-bottom: 35px;
+  padding-top: 3vh;
+  margin-bottom: 30px;
 }
 
 h3 {
@@ -67,8 +67,12 @@ h4 {
 p, li {
   font-size: 12px;
   color: @dark;
-  text-align: justify;
+  text-align: center;
   line-height: 20px;
+}
+
+li {
+  text-align: left;
 }
 
 .accent {
@@ -78,6 +82,7 @@ p, li {
   text-align: center;
   margin-bottom: 10px
 }
+.left { text-align: left; }
 .italic { font-style: italic; }
 .center { text-align: center; }
 .turk { color: @p-turk; font-family: inherit; }
@@ -140,6 +145,22 @@ p, li {
   margin: 0;
   min-height: 100vh;
   position: relative;
+  overflow-x: hidden;
+  .topArrow {
+    border-width: 60px 50vw 0 50vw;
+    border-style: solid;
+    border-color: @light-1 transparent transparent transparent;
+  }
+  .bottomArrow {
+    border-width: 0px 50vw 160px 50vw;
+    border-style: solid;
+    border-color: transparent transparent @light-1 transparent;
+    position: absolute;
+    bottom: 0;
+    z-index: -1;
+    &.left {left: -50% }
+    &.right {right: -50% }
+  }
 }
 .light {
   background-color: @light-1;
@@ -149,15 +170,21 @@ p, li {
   margin: 0 auto;
   max-width: 900px;
   padding: 0 6%;
+  &.flex {
+    display: flex;
+    justify-content: space-between;
+  }
 }
 
 .bottom {
   position: absolute;
-  left: 50%;
-  bottom: 4vh;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
   .btn {
+    bottom: 2vh;
     position: relative;
-    left: -50%;
   }
 }
 
@@ -190,6 +217,7 @@ p, li {
 }
 
 #topBlock {
+  background-color: @light-1;
   .vertCenter {
     position: absolute;
     width: 100%;
@@ -197,7 +225,7 @@ p, li {
     display: flex;
     align-items: center;
     justify-content: center;
-    top: -2%;
+    top: 0;
     .container {
       position: relative;
       align-self: center;
@@ -209,17 +237,9 @@ p, li {
         color: @dark;
       }
     }
-    #coaster {  width: 60vw; max-width: 350px;
- }
+    #coaster {  width: 60vw; max-width: 350px;}
   }
-  #greyBG {
-    background: #F5F5F5;
-    position: absolute;
-    width: 100vw;
-    height: 56vh;
-    top: 44vh;
-    z-index: -1;
-  }
+  .bottomArrow { border-color: transparent transparent #FFF transparent; }
   #logo {
     width: 100px;
     margin-top: 5vh;
@@ -229,9 +249,7 @@ p, li {
 
 #targetsBlock {
   .container {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 12vh;
+    margin-top: 10vh;
     .target {
       width: 30%;
       img {
@@ -265,33 +283,6 @@ p, li {
         margin: 5px auto 10px auto;
         transition: @transition;
       }
-      // .illu {
-      //   position: relative;
-      //   z-index: 0;
-      //   background: #FFF;
-      //   border-radius: 2px;
-      //   width: 60px;
-      //   height: 60px;
-      //   transform: rotate(45deg);
-      //   margin-left: ~"calc(50% - 30px)";
-      //   margin-bottom: 25px;
-      //   transition: @transition;
-      //   img {
-      //     position: absolute;
-      //     width: 64px;
-      //     transform: rotate(-45deg);
-      //     margin-left: -32px;
-      //     margin-top: 6px;
-      //     &.color {
-      //       opacity: 0;
-      //       transition: @transition;
-      //
-      //       &.active {
-      //         opacity: 1;
-      //       }
-      //     }
-      //   }
-      // }
       h3 {
         position: relative;
         z-index: 1;
@@ -345,7 +336,7 @@ p, li {
     padding: 25px;
     background: #FFFFFF;
     box-shadow: @shadowCard;
-    height: ~"calc(100vh - 275px)";
+    height: ~"calc(100vh - 240px)";
     img { width: 100%; }
     .info {
       position: relative;
@@ -359,11 +350,9 @@ p, li {
 
 #servicesBlock {
   .container {
-    display: flex;
-    justify-content: space-between;
     margin-top: 4vh;
     flex-wrap: wrap;
-    .service {
+    .item {
       height: 24vh;
       width: 24%;
       background-color: #FFF;
@@ -376,14 +365,12 @@ p, li {
 
 #pricingBlock {
   .container {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 7vh;
-    .price {
-      width: 22%;
-      height: 62vh;
+    .item {
+      width: 18%;
       border: 4px solid #FFFFFF;
       position: relative;
+      display: flex;
+      flex-direction: column;
       .rhomboid {
         background-color: @red;
         color: #FFF;
@@ -392,6 +379,7 @@ p, li {
       }
       .image {
         background-color: #FFF;
+        height: 90px;
         img {
           margin: 0px auto 20px auto;
           padding: 10px;
@@ -399,23 +387,30 @@ p, li {
           height: 70px;
         }
       }
+      h4 { margin-top: 15px; }
       .content {
-        padding: 0px 20px;
-        li {
-          list-style: none;
-          line-height: 20px;
-          margin: 2px 0px 2px 18px;
-          .icon {
-            font-size: 14px;
-            padding-top: 2px;
-            margin-left: -18px;
-            position: absolute;
+        padding: 0px 10px;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        ul {
+          margin-top: 14px;
+          li {
+            list-style: none;
+            line-height: 20px;
+            margin: 2px 0px 2px 18px;
+            .icon {
+              font-size: 14px;
+              padding-top: 2px;
+              margin-left: -18px;
+              position: absolute;
+            }
           }
         }
         .pricing {
-          position: absolute;
-          bottom: 20px;
-          width: ~"calc(100% - 40px)";
+          margin-top: auto;
+          margin-bottom: 15px;
+          padding-top: 15px;
           p {
             text-align: center;
             font-size: 12px;
@@ -431,18 +426,14 @@ p, li {
 }
 
 #contactBlock {
-  .contactArrow {
-    border-width: 85px 50vw 0 50vw;
-    border-style: solid;
-    border-color: @light-1 transparent transparent transparent;
-  }
+  h2 { padding-top: 25px; }
   form {
     max-width: 500px;
-    margin: 40px auto;
+    margin: 15px auto 25px auto;
     .formItem {
       &.line {
         border-bottom: 2px solid @light-2;
-        margin-bottom: 50px;
+        margin-bottom: 35px;
       }
       label, .value {
         width: 20%;
@@ -515,7 +506,7 @@ p, li {
 #footer {
   background-color: @red;
   .container {
-    display: flex;
+    &.flex { justify-content: flex-start;}
     .column {
       display: block;
       margin: 30px 10% 30px 0;
@@ -551,45 +542,63 @@ p, li {
 }
 
 @media @tabletscreen {
-  h2 { font-size: 25px; padding: 0 6%; } //padding container
+  h2 { padding: 30px 12% 0px 12%; font-size: 4vw; } //padding container
+  .bottom.unfixTablet {
+    position: relative;
+    bottom: auto;
+    margin-top: 40px;
+    .btn { position: relative; bottom: 0; }
+    .bottomArrow.left, .bottomArrow.right  { border-width: 0px 50vw 80px 50vw; }
+  }
   #topBlock {
     .vertCenter {
-      .container { width: 100%; }
+      .container { width: 100%; padding: 0 12%; }
       h1 {
         margin-top: -18%;
         font-size: 7vw;
         line-height: 9vw;
       }
-    .subtitle {
-       width: 50vw;
-       font-size: 14px;
-       line-height: 20px;
+      .subtitle {
+         width: 50vw;
+         font-size: 14px;
+         line-height: 20px;
+      }
+      #coaster {
+        width: 60vh;
+        position: absolute;
+        margin-left: 36vw;
+        margin-top: -35px;
+      }
     }
-    #coaster {
-      width: 60vh;
+    .bottom {
       position: absolute;
-      margin-left: 58vw;
-      margin-top: -25px;
+      bottom: 0;
+      .btn { bottom: 4vh; }
     }
-    }
-    #greyBG {
-      height: 61.5vh;
-      top: 38.5vh;
-    }
+
   }
   #phasesBlock {
     padding-top: 30px;
     h4 { display: none; }
     #tabcontent {
-      img { display: none; }
+      .container { margin-top: 10vh;}
       .info {
         width: 100%;
         margin-top: 0px;
       }
     }
   }
+  #servicesBlock .container .item {
+    padding: 6%;
+    width: 36%;
+    height: 36%;
+  }
   #footer {
     padding-bottom: 10Px;
+    position: absolute;
+    display: block;
+    width: 100%;
+    bottom: 0;
     .container {
       display: block;
       #logo { display: none; }
@@ -599,4 +608,60 @@ p, li {
       }
     }
   }
+}
+
+@media @mobilescreen {
+  h2 { font-size: 7vw; }
+  .bottom .btn { position: relative; visibility: hidden; }
+  .bottom.unfixMobile {
+    position: relative;
+    bottom: auto;
+    margin-top: 40px;
+    .bottomArrow.left, .bottomArrow.right  { border-width: 0px 50vw 80px 50vw; }
+  }
+  .container.unfixMobile {
+    display: block;
+    .item { width: auto !important ; }
+  }
+  #topBlock {
+    min-height: 100vh;
+    .vertCenter #coaster {
+      width: 30vh;
+      position: absolute;
+      margin-left: 49vw;
+      margin-top: -35px;
+    }
+    .bottom .btn {visibility: visible;}
+  }
+  #targetsBlock {
+    .container {
+      display: block;
+      .target { width: auto; }
+    }
+  }
+  #servicesBlock {
+    .container {
+      display: block;
+      .item {
+        padding: 6%;
+        width: auto;
+      }
+    }
+  }
+  #phasesBlock #tabcontent {
+    display: flex;
+    height: ~"calc(100vh - 250px)";
+    .container { align-self: center; margin-top: 0; }
+    img { display: none; }
+  }
+  #pricingBlock .container .item {
+    height: fit-content;
+    margin-bottom: 20px;
+    .pricing {
+      position: relative !important;
+      margin: 20px auto;
+      bottom: 0 !important;
+    }
+  }
+  #contactBlock #footer {position: relative;}
 }

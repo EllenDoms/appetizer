@@ -25,15 +25,22 @@ class App extends Component {
                 <div className="subtitle">Got a wicked idea? <br /> We help you kickstart your application. </div>
               </div>
               <img id="coaster" src={coaster} alt="beer coaster with idea" />
-              <div className="bottom"><a href='#targetsBlockAnchor' className="btn btn-secondary btn-arrow">Start today<div className="material-icons">arrow_downward</div></a></div>
             </div>
-            <div id="greyBG" />
+            <div className="bottom unfixMobile">
+              <a href='#targetsBlockAnchor' className="btn btn-secondary btn-arrow">Get started<div className="material-icons">arrow_downward</div></a>
+              <div className="bottomArrow left" />
+              <div className="bottomArrow right" />
+            </div>
           </div>
         </ScrollableAnchor>
         <ScrollableAnchor id="targetsBlockAnchor">
-          <div id="targetsBlock" className="block light">
+          <div id="targetsBlock" className="block">
             <Targets />
-            <div className="bottom"><a href='#phasesBlockAnchor' className="btn btn-secondary btn-arrow">Cool, but how does it work?<div className="material-icons">arrow_downward</div></a></div>
+            <div className="bottom unfixMobile">
+              <a href='#phasesBlockAnchor' className="btn btn-secondary btn-arrow">How does it work?<div className="material-icons">arrow_downward</div></a>
+              <div className="bottomArrow left" />
+              <div className="bottomArrow right" />
+            </div>
           </div>
         </ScrollableAnchor>
         <ScrollableAnchor id="phasesBlockAnchor">
@@ -44,48 +51,44 @@ class App extends Component {
         <ScrollableAnchor id="servicesBlockAnchor">
           <div id="servicesBlock" className="block light">
             <Services />
-            <div className="bottom"><a href='#pricingBlockAnchor' className="btn btn-secondary btn-arrow">What does it cost?<div className="material-icons">arrow_downward</div></a></div>
+            <div className="bottom unfixTablet">
+              <a href='#pricingBlockAnchor' className="btn btn-secondary btn-arrow">What does it cost?<div className="material-icons">arrow_downward</div></a>
+            </div>
           </div>
         </ScrollableAnchor>
         <ScrollableAnchor id="pricingBlockAnchor">
           <div id="pricingBlock" className="block light">
             <Pricing />
-            <div className="bottom"><a href='#contactBlockAnchor' className="btn btn-secondary btn-arrow">This is what I need!<div className="material-icons">arrow_downward</div></a></div>
+            <div className="bottom unfixMobile">
+              <a href='#contactBlockAnchor' className="btn btn-secondary btn-arrow">More information<div className="material-icons">arrow_downward</div></a>
+            </div>
           </div>
         </ScrollableAnchor>
         <ScrollableAnchor id="contactBlockAnchor">
           <div id="contactBlock" className="block white">
-            <div className="contactArrow" />
+            <div className="topArrow" />
             <div className="container">
               <h2>Talk to us</h2>
               <ContactForm />
             </div>
+            <div id="footer">
+              <div className="container flex">
+                <div className="column">
+                  <a href='#topBlockAnchor' className="btn btn-float material-icons">arrow_upward</a>
+                  <img id="logo" src={logoWhite} alt="logo" />
+                </div>
+                <div className="column">
+                  <h3>Contact</h3>
+                  <ul>
+                    <li className="nolink">info@app-etizer.be</li>
+                    <li className="nolink">+32 474 88 39 33‬</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
           </div>
         </ScrollableAnchor>
-        <div id="footer">
-          <div className="container">
-            <div className="column">
-              <a href='#topBlockAnchor' className="btn btn-float material-icons">arrow_upward</a>
-              <img id="logo" src={logoWhite} alt="logo" />
-            </div>
-            <div className="column">
-              <h3>Contact</h3>
-              <ul>
-                <li className="nolink">Kleine Nieuwedijkstraat 64/102, 2800 Mechelen</li>
-                <li className="nolink">info@app-etizer.be</li>
-                <li className="nolink">+32 474 88 39 33‬</li>
-              </ul>
-            </div>
-            <div className="column">
-              <h3>Follow us</h3>
-              <ul>
-                <li><a href="#">Facebook</a></li>
-                <li><a href="#">Twitter</a></li>
-                <li><a href="#">Github‬</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
+
       </div>
     );
   }

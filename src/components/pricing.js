@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 
 const pricing = [
+  { h3: "A chat with us",
+    title: "",
+    check: [ ],
+    price: "Totally free!"},
   { h3: "A clear idea",
     title: "Small realisation of your idea to use as demonstration.",
     check: [ "Draft presentation", "Scope refinements", "Quote for prototype" ],
@@ -24,11 +28,11 @@ export default class Pricing extends Component {
     return pricing.map((item, i) => {
       const img = require(`../style/img/bottles/bottle-${i + 1}.png`);
       let priceBefore = [];
-      for (let j = 0; j < i && i != pricing.length - 1; j++ ) {
+      for (let j = 1; j < i && i != pricing.length - 1; j++ ) {
         priceBefore.push(<p key={`priceBefore${j}`} className="italic">{pricing[j].h3}<br/>+</p>)
       }
       return(
-        <div key={i} className="price">
+        <div key={i} className="item">
           {i > 0 ? <div className="rhomboid"><div className="inner material-icons">arrow_forward</div></div> : "" }
           <div className="image"><img src={img} alt='price' /></div>
           <h4>{item.h3}</h4>
@@ -42,7 +46,7 @@ export default class Pricing extends Component {
             <div className="pricing">
               {priceBefore}
               <p className="accent">{item.price}</p>
-              {i < (pricing.length - 1) ? <p className="small">Excl btw</p> : ""}
+              {i > 0 && i < (pricing.length - 1) ? <p className="small">Excl btw</p> : ""}
             </div>
           </div>
         </div>
@@ -53,7 +57,7 @@ export default class Pricing extends Component {
     return(
       <div>
         <h2>Pricing</h2>
-        <div className="container">
+        <div className="container flex unfixMobile">
           {this.renderPricing()}
         </div>
       </div>
