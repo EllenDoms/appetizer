@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { HashLink as Link } from 'react-router-hash-link';
 
 import { setActivePhase } from '../actions';
 
@@ -47,7 +48,7 @@ class Phases extends Component {
       const img = require(`../style/img/steps/step${key}.png`);
       return (
         <div key={key} className={key === activePhase ? "visible" : "hidden" }>
-          <img src={img} alt='app development phase' />
+          <img src={img} alt='app, development, phase' />
           <div className="info">
             <h3>{phase.h3}</h3>
             <div className="accent">{phase.accent}</div>
@@ -72,8 +73,8 @@ class Phases extends Component {
             {this.renderTabContent(activePhase)}
           </div>
           <div className="bottom">
-            <a href='#servicesBlockAnchor' className="btn btn-secondary btn-arrow">Tell me more!<div className="material-icons">arrow_downward</div></a>
-        </div>
+            <Link smooth to="/process/#pricingBlock" className="btn btn-secondary btn-arrow">More information<div className="material-icons">arrow_downward</div></Link>
+          </div>
         </div>
       </div>
     )

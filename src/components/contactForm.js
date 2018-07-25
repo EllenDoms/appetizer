@@ -5,8 +5,8 @@ import { sendContactForm } from '../actions';
 
 class ContactForm extends Component {
   renderField(field) {
-    const { type, meta: { touched, error} } = field;
-    const classNames= `formItem line ${touched && error ? 'has-danger' : ''} `;
+    const { type, classname, meta: { touched, error} } = field;
+    const classNames= `${classname} formItem line ${touched && error ? 'has-danger' : ''} `;
     return (
       <div className={classNames}>
         <label>{field.label}</label>
@@ -19,7 +19,7 @@ class ContactForm extends Component {
   }
   renderRadio(field) {
     const { input: { value }, type } = field;
-    return (
+    return (  
       <span className='radioItem'>
         <input type={type} {...field.input} ></input>
         <span className="value">{value}</span>
@@ -49,8 +49,8 @@ class ContactForm extends Component {
       return (
         <form onSubmit={handleSubmit(this.onSubmit)}>
           <Field label='Name' name='name' type="text" component={this.renderField} />
-          <Field label='Email' name='email' type="email" component={this.renderField} />
-          <Field label='Phone' name='phone' type="text" component={this.renderField} />
+          <Field label='Email' classname="half" name='email' type="email" component={this.renderField} />
+          <Field label='Phone' classname="half" name='phone' type="text" component={this.renderField} />
           <div className="formItem radio">
             <label>Preferred method of communication</label>
             <Field name='communication' type='radio' value="Phone" component={this.renderRadio} />
@@ -63,9 +63,9 @@ class ContactForm extends Component {
     } else {
       return (
         <div>
-          <p className="center">Awesome! We recieved your message and will get back to you as soon as possible!</p>
+          <p className="center">Awesome! We received your message and will get back to you as soon as possible!</p>
         </div>
-        
+
       )
     }
 

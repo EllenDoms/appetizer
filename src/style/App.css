@@ -12,8 +12,8 @@ h1 {
   color: #000000;
   font-family: 'Anton', sans-serif;
   font-weight: normal;
-  font-size: 4.5vw;
-  line-height: 6vw;
+  font-size: 50px;
+  line-height: 60px;
   letter-spacing: 4px;
   margin-bottom: 20px;
 }
@@ -34,7 +34,7 @@ h3 {
   color: #000000;
   letter-spacing: 1.5px;
   text-align: center;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 h4 {
   font-size: 14px;
@@ -97,7 +97,7 @@ li {
 .btn.btn-primary {
   background-color: #38C3DB;
   color: #FFF;
-  margin: 20px auto 0px auto;
+  margin-top: 20px;
 }
 .btn.btn-secondary {
   width: fit-content;
@@ -128,19 +128,17 @@ li {
 .btn.btn-float:hover {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
+.btn.center {
+  margin: auto;
+}
 .block {
   margin: 0;
   min-height: 100vh;
   position: relative;
   overflow-x: hidden;
 }
-.block .topArrow {
-  border-width: 60px 50vw 0 50vw;
-  border-style: solid;
-  border-color: #F5F5F5 transparent transparent transparent;
-}
 .block .bottomArrow {
-  border-width: 0px 50vw 160px 50vw;
+  border-width: 0px 50vw 15vh 50vw;
   border-style: solid;
   border-color: transparent transparent #F5F5F5 transparent;
   position: absolute;
@@ -153,24 +151,28 @@ li {
 .block .bottomArrow.right {
   right: -50%;
 }
+.block .bottomArrow.white {
+  border-color: transparent transparent #FFF transparent;
+}
 .light {
   background-color: #F5F5F5;
 }
 .container {
-  margin: 0 auto;
   max-width: 900px;
-  padding: 0 6%;
+  padding: 0 10%;
+  margin: 0 auto;
 }
 .container.flex {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 .bottom {
   position: absolute;
   width: 100%;
   bottom: 0;
   left: 0;
-  z-index: 1;
+  z-index: 0;
 }
 .bottom .btn {
   bottom: 2vh;
@@ -178,10 +180,10 @@ li {
 }
 .coasterSmall {
   color: #FFF;
-  padding: 12px;
-  border-radius: 25px;
-  font-size: 16px;
-  margin: 10px auto 20px auto;
+  padding: 15px;
+  border-radius: 35px;
+  font-size: 24px;
+  margin: 20px auto 40px auto;
   display: block;
   width: fit-content;
   border: solid 3px #fff;
@@ -202,24 +204,162 @@ li {
   width: 26px;
   text-align: center;
 }
+.card {
+  background-color: #FFF;
+  box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.12);
+}
+.card.white {
+  box-shadow: 0 3px 25px 0 rgba(0, 0, 0, 0.2);
+}
+.card.onlyCard {
+  max-width: 400px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 30px;
+}
+form {
+  max-width: 500px;
+  margin: 15px auto 0px auto;
+}
+form .half {
+  width: 48%;
+  float: left;
+  margin-right: 2%;
+}
+form .formItem {
+  position: relative;
+}
+form .formItem.line {
+  border-bottom: 2px solid #EBEDEE;
+  margin-bottom: 35px;
+}
+form .formItem.line label {
+  position: absolute;
+}
+form .formItem label,
+form .formItem .value {
+  width: 20%;
+  color: #000000;
+  font-size: 14px;
+}
+form .formItem input {
+  width: 70%;
+  border: none;
+  padding-left: 30%;
+  line-height: 25px;
+  font-size: 14px;
+  outline: none;
+  z-index: 9;
+  position: relative;
+  background: none;
+}
+form .formItem textarea {
+  margin-top: 4px;
+  width: 100%;
+  min-height: 70px;
+  border: 2px solid #EBEDEE;
+}
+form .formItem .text-help {
+  color: #D05C76;
+  font-style: italic;
+  font-size: 12px;
+  float: right;
+  margin-top: 8px;
+  position: absolute;
+  right: 0;
+}
+form .formItem.radio label {
+  width: 100%;
+  display: block;
+  position: relative;
+}
+form .formItem.radio .radioItem {
+  width: 30%;
+  margin: 10px 0 20px;
+  display: inline-block;
+}
+form .formItem.radio .radioItem input {
+  margin-left: 0;
+  margin-right: 10px;
+  appearance: none;
+  display: inline-block;
+  position: relative;
+  background-color: #EBEDEE;
+  color: #FFF;
+  height: 22px;
+  width: 22px;
+  top: 7px;
+  border: 0;
+  border-radius: 50px;
+  cursor: pointer;
+  outline: none;
+  padding-left: 0px;
+}
+form .formItem.radio .radioItem input:checked::before {
+  position: absolute;
+  font: 13px/1 'Open Sans', sans-serif;
+  left: 8px;
+  top: 3px;
+  content: '\02143';
+  transform: rotate(40deg);
+}
+form .formItem.radio .radioItem input:hover {
+  background-color: #DEE0E2;
+}
+form .formItem.radio .radioItem input:checked {
+  background-color: #38C3DB;
+}
+form .formItem.radio .radioItem .value {
+  margin-right: 10%;
+}
+#header {
+  z-index: 2;
+  padding-top: 10px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  background-color: #FFF;
+}
+#header img {
+  width: 10vw;
+}
+#header ul {
+  float: right;
+}
+#header ul li {
+  float: left;
+  list-style: none;
+  margin-left: 20px;
+  margin-top: 0.5vw;
+  font-size: 12px;
+}
+#header ul li a {
+  color: #828282;
+  line-height: 38px;
+}
+#header ul li a:hover,
+#header ul li a.active {
+  color: #000000;
+  border-bottom: 3px solid #38C3DB;
+}
 #topBlock {
-  background-color: #F5F5F5;
+  background-color: #FFF;
 }
 #topBlock .vertCenter {
-  position: absolute;
-  width: 100%;
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   top: 0;
 }
-#topBlock .vertCenter .container {
+#topBlock .vertCenter.container {
   position: relative;
   align-self: center;
-  margin: 0;
 }
-#topBlock .vertCenter .container .subtitle {
+#topBlock .vertCenter.container .above {
+  width: 60%;
+}
+#topBlock .vertCenter.container .above .subtitle {
   font-size: 16px;
   font-weight: normal;
   line-height: 24px;
@@ -229,13 +369,8 @@ li {
   width: 60vw;
   max-width: 350px;
 }
-#topBlock .bottomArrow {
-  border-color: transparent transparent #FFF transparent;
-}
-#topBlock #logo {
-  width: 100px;
-  margin-top: 5vh;
-  margin-left: calc(50% - 50px);
+#workshopBlock .card {
+  margin-top: 20vh;
 }
 #targetsBlock .container {
   margin-top: 10vh;
@@ -303,7 +438,7 @@ li {
   transform: rotate(45deg);
   margin-bottom: -24px;
   margin-left: calc(50% - 15px);
-  box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.03);
+  box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.12);
   margin-top: 15px;
 }
 #phasesBlock #tabs li.active .line,
@@ -322,12 +457,12 @@ li {
   cursor: pointer;
 }
 #phasesBlock #tabs li:hover .illu {
-  box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.03);
+  box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.12);
 }
 #phasesBlock #tabcontent {
   padding: 25px;
   background: #FFFFFF;
-  box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.03);
+  box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.12);
   height: calc(100vh - 240px);
 }
 #phasesBlock #tabcontent img {
@@ -342,15 +477,17 @@ li {
 }
 #servicesBlock .container {
   margin-top: 4vh;
-  flex-wrap: wrap;
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
 }
 #servicesBlock .container .item {
-  height: 24vh;
-  width: 24%;
-  background-color: #FFF;
-  box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.03);
+  height: 30vh;
+  width: 20%;
   margin-bottom: 4%;
-  padding: 3%;
+  padding: 6%;
+  flex: 0 0 auto;
+  margin-right: 2vw;
 }
 #pricingBlock .container .item {
   width: 18%;
@@ -411,88 +548,44 @@ li {
 #pricingBlock .container .item .content .pricing p.accent {
   font-size: 14px;
 }
-#contactBlock h2 {
-  padding-top: 25px;
+#contactPage #topBlock {
+  background-color: #F5F5F5;
 }
-#contactBlock form {
-  max-width: 500px;
-  margin: 15px auto 25px auto;
+#contactPage #topBlock .left,
+#contactPage #topBlock .right {
+  margin-top: 75px;
+  width: 40%;
+  padding: 4%;
 }
-#contactBlock form .formItem.line {
-  border-bottom: 2px solid #EBEDEE;
-  margin-bottom: 35px;
+#contactPage #topBlock .right {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
 }
-#contactBlock form .formItem label,
-#contactBlock form .formItem .value {
-  width: 20%;
-  color: #000000;
-  font-size: 14px;
+#contactPage #topBlock .right #call {
+  font-size: 24px;
 }
-#contactBlock form .formItem input {
-  width: 80%;
-  border: none;
-  margin-left: 10%;
-  line-height: 25px;
-  font-size: 14px;
-  outline: none;
+#contactPage #topBlock .right #address {
+  margin-top: auto;
 }
-#contactBlock form .formItem textarea {
-  margin-top: 4px;
-  width: 100%;
-  min-height: 70px;
-  border: 2px solid #EBEDEE;
+#contactPage #topBlock .left {
+  margin-top: 75px;
+  width: calc(44% + 400px);
+  margin-left: -400px;
 }
-#contactBlock form .formItem .text-help {
-  color: #D05C76;
-  font-style: italic;
-  font-size: 12px;
-  float: right;
-  margin-top: 8px;
-}
-#contactBlock form .formItem.radio label {
-  width: 100%;
-  display: block;
-}
-#contactBlock form .formItem.radio .radioItem {
-  width: 30%;
-  margin: 10px 0 20px;
-  display: inline-block;
-}
-#contactBlock form .formItem.radio .radioItem input {
-  margin-left: 0;
-  margin-right: 10px;
-  appearance: none;
-  display: inline-block;
-  position: relative;
-  background-color: #EBEDEE;
-  color: #FFF;
-  top: 7px;
-  height: 22px;
-  width: 22px;
-  border: 0;
-  border-radius: 50px;
-  cursor: pointer;
-  outline: none;
-}
-#contactBlock form .formItem.radio .radioItem input:checked::before {
-  position: absolute;
-  font: 13px/1 'Open Sans', sans-serif;
-  left: 8px;
-  top: 3px;
-  content: '\02143';
-  transform: rotate(40deg);
-}
-#contactBlock form .formItem.radio .radioItem input:hover {
-  background-color: #DEE0E2;
-}
-#contactBlock form .formItem.radio .radioItem input:checked {
-  background-color: #38C3DB;
-}
-#contactBlock form .formItem.radio .radioItem .value {
-  margin-right: 10%;
+#contactPage #topBlock .left .backleft {
+  margin-left: 400px;
 }
 #footer {
   background-color: #D05C76;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+#footer .container {
+  margin-top: 0;
+  overflow: visible;
 }
 #footer .container.flex {
   justify-content: flex-start;
@@ -534,7 +627,7 @@ li {
 #footer .container .column li.nolink {
   opacity: 0.7;
 }
-@media only screen and (max-width: 800px) {
+@media screen and (max-width: 1024px) {
   h2 {
     padding: 30px 12% 0px 12%;
     font-size: 4vw;
@@ -597,40 +690,70 @@ li {
     width: 36%;
     height: 36%;
   }
-  #footer {
-    padding-bottom: 10Px;
-    position: absolute;
-    display: block;
-    width: 100%;
-    bottom: 0;
-  }
-  #footer .container {
-    display: block;
-  }
-  #footer .container #logo {
-    display: none;
-  }
-  #footer .container .column .btn-float {
-    top: -18px;
-    margin-left: 0px;
-  }
 }
-@media only screen and (max-width: 415px) {
-  h2 {
-    font-size: 7vw;
-  }
+@media screen and (max-width: 1024px) and (orientation: landscape), screen and (max-width: 415px) {
   .bottom .btn {
     position: relative;
     visibility: hidden;
   }
-  .bottom.unfixMobile {
-    position: relative;
-    bottom: auto;
-    margin-top: 40px;
+  #topBlock {
+    min-height: 100vh;
   }
-  .bottom.unfixMobile .bottomArrow.left,
-  .bottom.unfixMobile .bottomArrow.right {
-    border-width: 0px 50vw 80px 50vw;
+  #phasesBlock #tabcontent {
+    display: flex;
+    height: calc(100vh - 250px);
+  }
+  #phasesBlock #tabcontent .container {
+    align-self: center;
+    margin-top: 0;
+  }
+  #phasesBlock #tabcontent img {
+    display: none;
+  }
+  #contactBlock #footer {
+    position: relative;
+  }
+}
+@media screen and (max-width: 1024px) and (orientation: landscape) {
+  h2 {
+    font-size: 5vw;
+  }
+  .container.unfixMobile .item {
+    width: 30% !important;
+    margin-bottom: 20px;
+  }
+  .container.unfixMobile:after {
+    content: "";
+    width: 30%;
+  }
+  #topBlock {
+    height: 100vh;
+    overflow: hidden;
+  }
+  #topBlock .vertCenter .container h1 {
+    margin-top: 4%;
+    font-size: 4vw;
+    line-height: 5vw;
+    margin-bottom: 5px;
+  }
+  #topBlock .vertCenter .container .subtitle {
+    font-size: 15px;
+    font-weight: normal;
+    line-height: 20px;
+  }
+  #topBlock .vertCenter #coaster {
+    width: 71vh;
+    position: absolute;
+    margin-left: 24vw;
+    margin-top: 17px;
+  }
+  #topBlock .bottom {
+    bottom: -5px;
+  }
+}
+@media screen and (max-width: 415px) {
+  h2 {
+    font-size: 7vw;
   }
   .container.unfixMobile {
     display: block;
@@ -663,17 +786,6 @@ li {
     padding: 6%;
     width: auto;
   }
-  #phasesBlock #tabcontent {
-    display: flex;
-    height: calc(100vh - 250px);
-  }
-  #phasesBlock #tabcontent .container {
-    align-self: center;
-    margin-top: 0;
-  }
-  #phasesBlock #tabcontent img {
-    display: none;
-  }
   #pricingBlock .container .item {
     height: fit-content;
     margin-bottom: 20px;
@@ -683,7 +795,32 @@ li {
     margin: 20px auto;
     bottom: 0 !important;
   }
-  #contactBlock #footer {
+  #footer {
+    padding-bottom: 10Px;
+    position: absolute;
+    display: block;
+    width: 100%;
+    bottom: 0;
+  }
+  #footer .container {
+    display: block;
+  }
+  #footer .container #logo {
+    display: none;
+  }
+  #footer .container .column .btn-float {
+    top: -18px;
+    margin-left: 0px;
+  }
+}
+@media screen and (max-width: 415px), screen and (max-width: 824px) and (orientation: landscape) {
+  .bottom.unfixMobile {
     position: relative;
+    bottom: auto;
+    margin-top: 40px;
+  }
+  .bottom.unfixMobile .bottomArrow.left,
+  .bottom.unfixMobile .bottomArrow.right {
+    border-width: 0px 50vw 80px 50vw;
   }
 }

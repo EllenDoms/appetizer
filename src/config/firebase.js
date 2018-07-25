@@ -14,3 +14,4 @@ if (!firebase.apps.length) {
 }
 
 export const databaseContactForm = firebase.database().ref('contactForm');
+export const databaseWorkshopForm = firebase.database().ref('workshopForm');

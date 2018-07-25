@@ -2,24 +2,24 @@ import React, { Component } from 'react';
 
 const pricing = [
   { h3: "A chat with us",
-    title: "",
-    check: [ ],
+    title: "You’ll have a better idea of the feasability of your idea!",
+    check: [ "Get technical tips", "Quote clear idea" ],
     price: "Totally free!"},
   { h3: "A clear idea",
     title: "Small realisation of your idea to use as demonstration.",
-    check: [ "Draft presentation", "Scope refinements", "Quote for prototype" ],
+    check: [ "Draft presentation", "Scope refinements", "Quote prototype" ],
     price: "€ 600"},
   { h3: "Prototype",
     title: "A first version of the elaborate idea to test a concept.",
-    check: [ "Branded template app", "Data stored in cloud", "Social authentication", "Quote for early launch" ],
+    check: [ "Template app", "Data stored in cloud", "Social login/signin", "Quote early launch" ],
     price: "€ 2500 - € 3000"},
   { h3: "Early launch",
-    title: "A working product: minimal features added to the prototype for an early launch.",
-    check: [ "Pitch presentation", "Stable app*", "Basic analytics report", "Basic support", "Quote for go to market" ],
+    title: "A working product: minimal features added to the prototype.",
+    check: [ "Pitch presentation", "Stable app*", "Basic analytics", "Basic support", "Quote go to market" ],
     price: "€ 4000 - € 6000"},
   { h3: "Go to market",
     title: "A product that goes beyond the minimum of the early launch.",
-    check: [ "Detailed UI style guide*", "3rd party integrations", "Extended support", "...", "Whatever you like" ],
+    check: [ "UI style guide", "3rd party integrations", "Extended support", "...", "Whatever you like" ],
     price: "Depends on functionalities"},
 ]
 
@@ -34,7 +34,7 @@ export default class Pricing extends Component {
       return(
         <div key={i} className="item">
           {i > 0 ? <div className="rhomboid"><div className="inner material-icons">arrow_forward</div></div> : "" }
-          <div className="image"><img src={img} alt='price' /></div>
+          <div className="image"><img src={img} alt='price, development, app' /></div>
           <h4>{item.h3}</h4>
           <div className="content">
             <p className="title">{item.title}</p>
@@ -43,11 +43,11 @@ export default class Pricing extends Component {
                 return <li key={`check-${i}`}><span className="icon material-icons">check</span>{check}</li>
               })}
             </ul>
-            <div className="pricing">
+            {/* <div className="pricing">
               {priceBefore}
               <p className="accent">{item.price}</p>
               {i > 0 && i < (pricing.length - 1) ? <p className="small">Excl btw</p> : ""}
-            </div>
+            </div> */}
           </div>
         </div>
       )
@@ -56,7 +56,7 @@ export default class Pricing extends Component {
   render() {
     return(
       <div>
-        <h2>Pricing</h2>
+        <h2>Deliverables</h2>
         <div className="container flex unfixMobile">
           {this.renderPricing()}
         </div>

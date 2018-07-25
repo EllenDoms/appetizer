@@ -18,7 +18,7 @@ export default class Targets extends Component {
       const img = require(`../style/img/targets/target${i + 1}.png`);
       return(
         <div key={i} className="target">
-          <img src={img} alt='target' />
+          <img src={img} alt='target, app, development' />
           <h3>{target.h3}</h3>
           <h4>{target.title}</h4>
           <p>{target.text}</p>
@@ -28,7 +28,7 @@ export default class Targets extends Component {
   }
   render() {
     return(
-      <div>
+      <div className="above">
         <h2>We know what’s important</h2>
         <div className="container flex">
           {this.renderTargets()}
