@@ -770,6 +770,10 @@ form .formItem.radio .radioItem .value {
   }
 }
 @media screen and (max-width: 414px) and (orientation: portrait) {
+  h1 {
+    font-size: 7vw;
+    line-height: 9vw;
+  }
   h2 {
     font-size: 5vw;
     padding: 20px 40px;
@@ -804,6 +808,13 @@ form .formItem.radio .radioItem .value {
   #footer .container .column .btn-float {
     top: -18px;
     margin-left: 0px;
+  }
+  #topBlock .vertCenter.container .above {
+    width: 75%;
+  }
+  #topBlock .vertCenter #coaster {
+    margin-right: -40vw;
+    width: 70vw;
   }
   #targetsBlock .container {
     display: block;
