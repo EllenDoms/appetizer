@@ -15,9 +15,10 @@ out:  App.css
 @transition: all 0.3s ease-out;
 
 @tabletscreen: ~"screen and (max-width: 1024px)";
-@tabletscreenLand: ~"screen and (max-width: 1024px) and (orientation: landscape)";
-@mobilescreen: ~"screen and (max-width: 415px)";
-@mobilescreenLand: ~"screen and (max-width: 824px) and (orientation: landscape)";
+@mobilescreen: ~"screen and (max-width: 853px)";
+// @ipadscreenPort: ~"screen and (max-width: 1024px) and (orientation: portrait)";
+@tabletscreenPort: ~"screen and (max-width: 768px) and (orientation: portrait)";
+@mobilescreenPort: ~"screen and (max-width: 414px) and (orientation: portrait)";
 
 * {
   padding: 0;
@@ -27,13 +28,25 @@ out:  App.css
 
 a { text-decoration: none; color: @dark; display: block; }
 
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-transition: "color 9999s ease-out, background-color 9999s ease-out";
+  -webkit-transition-delay: 9999s;
+}
 h1 {
   color: @dark;
   font-family: 'Anton', sans-serif;
   font-weight: normal;
   font-size: 50px;
   line-height: 60px;
-  letter-spacing: 4px;
+  letter-spacing: 2px;
   margin-bottom: 20px;
 }
 
@@ -241,7 +254,7 @@ form {
     &.line {
       border-bottom: 2px solid @light-2;
       margin-bottom: 35px;
-      label { position: absolute; }
+      label { position: absolute; margin-top: 4px; }
     }
     label, .value {
       width: 20%;
@@ -249,9 +262,9 @@ form {
       font-size: 14px;
     }
     input {
-      width: 70%;
+      width: ~"calc(100% - 55px)";
       border: none;
-      padding-left: 30%;
+      padding-left: 55px;
       line-height: 25px;
       font-size: 14px;
       outline: none;
@@ -323,7 +336,7 @@ form {
   right: 0;
   background-color: #FFF;
   img {
-    width: 10vw;
+    width: 100px;
   }
   ul {
     float: right;
@@ -555,7 +568,7 @@ form {
   #topBlock {
     background-color: @light-1;
     .left, .right {
-      margin-top: 75px;
+      margin-top: 10vh;
       width: 40%;
       padding: 4%;
 
@@ -569,9 +582,9 @@ form {
       #address { margin-top: auto; }
     }
     .left {
-      margin-top: 75px;
       width: ~"calc(44% + 400px)";
       margin-left: -400px;
+      height: 70vh;
       .backleft {
         margin-left: 400px;
       }
@@ -623,146 +636,101 @@ form {
 }
 
 @media @tabletscreen {
-  h2 { padding: 30px 12% 0px 12%; font-size: 4vw; } //padding container
-  .bottom.unfixTablet {
-    position: relative;
-    bottom: auto;
-    margin-top: 40px;
-    .btn { position: relative; bottom: 0; }
-    .bottomArrow.left, .bottomArrow.right  { border-width: 0px 50vw 80px 50vw; }
+  h1 { font-size: 4vw; line-height: 5vw; }
+  h3 { font-size: 20px; margin-bottom: 10px; }
+  .coasterSmall {
+    margin: 0px auto 15px auto;
+    padding: 12px;
+    font-size: 20px;
   }
-  #topBlock {
-    .vertCenter {
-      .container { width: 100%; padding: 0 12%; }
-      h1 {
-        margin-top: -18%;
-        font-size: 7vw;
-        line-height: 9vw;
-      }
-      .subtitle {
-         width: 50vw;
-         font-size: 14px;
-         line-height: 20px;
-      }
-      #coaster {
-        width: 60vh;
-        position: absolute;
-        margin-left: 36vw;
-        margin-top: -35px;
-      }
-    }
-    .bottom {
-      position: absolute;
-      bottom: 0;
-      .btn { bottom: 4vh; }
-    }
+  form {
+    margin: 10px auto 0px auto;
+    .formItem.line { margin-bottom: 15px; }
+  }
+  .card.onlyCard { padding: 20px; width: calc(100% - 40px); }
 
-  }
-  #phasesBlock {
-    padding-top: 30px;
-    h4 { display: none; }
-    #tabcontent {
-      .container { margin-top: 10vh;}
-      .info {
-        width: 100%;
-        margin-top: 0px;
-      }
-    }
-  }
-  #servicesBlock .container .item {
-    padding: 6%;
-    width: 36%;
-    height: 36%;
-  }
-}
-
-@media @tabletscreenLand, @mobilescreen {
-  .bottom .btn { position: relative; visibility: hidden; }
   #topBlock {
-    min-height: 100vh;
+    .vertCenter #coaster { max-width: 300px; }
   }
+  #targetsBlock .container {
+    margin-top: 0;
+    .target img { margin-bottom: 0; }
+  }
+  #servicesBlock .container .item { padding: 2% 6%; height: auto; }
   #phasesBlock #tabcontent {
-    display: flex;
-    height: ~"calc(100vh - 250px)";
-    .container { align-self: center; margin-top: 0; }
     img { display: none; }
+    .info { margin: 6vh auto 0px auto; }
   }
-  #contactBlock #footer {position: relative;}
-}
-
-@media @tabletscreenLand {
-  h2 { font-size: 5vw; }
-  .container.unfixMobile {
-    .item { width: 30% !important; margin-bottom: 20px;}
-    &:after { content: ""; width: 30%; } // so that last item in grid is to the left
+  #pricingBlock .container .item { width: 47%; margin-bottom: 20px;}
+  #contactPage {
+    #header { border-bottom: 1px @light-1 solid; }
+    #topBlock .left { height: auto; }
   }
-  #topBlock {
-    height: 100vh;
-    overflow: hidden;
-    .vertCenter {
-      .container {
-        h1 {
-          margin-top: 4%;
-          font-size: 4vw;
-          line-height: 5vw;
-          margin-bottom: 5px;
-        }
-        .subtitle {
-          font-size: 15px;
-          font-weight: normal;
-          line-height: 20px;
-        }
-      }
-      #coaster {
-        width: 71vh;
-        position: absolute;
-        margin-left: 24vw;
-        margin-top: 17px;
-      }
-    }
-    .bottom { bottom: -5px; }
-  }
+  #processPage #footer { position: relative; }
 }
 
 @media @mobilescreen {
-  h2 { font-size: 7vw; }
-  .container.unfixMobile {
-    display: block;
-    .item { width: auto !important ; }
-  }
+  h1 { margin-bottom: 10px; }
+  h2 { margin-bottom: 10px; }
+  h3 { font-size: 14px; margin-bottom: 5px; }
+  h4 { font-size: 12px;  }
+  .btn.btn-primary { margin-top: 10px; }
+  .bottom .btn { position: relative; visibility: hidden; }
   #topBlock {
-    min-height: 100vh;
-    .vertCenter #coaster {
-      width: 30vh;
-      position: absolute;
-      margin-left: 49vw;
-      margin-top: -35px;
-    }
-    .bottom .btn {visibility: visible;}
-  }
-  #targetsBlock {
-    .container {
-      display: block;
-      .target { width: auto; }
+    .vertCenter {
+      &.container .above {
+        margin-top: 7vh;
+        .subtitle { font-size: 12px; line-height: 14px; }
+      }
+      #coaster { width: 40vw; margin-top: 7vh; }
     }
   }
-
+  #processPage #topBlock .vertCenter {
+    height: auto;
+    margin-top: 65px;
+  }
+  #workshopBlock .card { margin-top: 10vh; }
+  #targetsBlock .container .target h4 { margin-bottom: 5px; }
   #servicesBlock {
     .container {
-      display: block;
-      .item {
-        padding: 6%;
-        width: auto;
+      flex-wrap: wrap;
+      .card {
+        width: 35%;
       }
     }
+    #footer { position: relative; }
   }
-  #pricingBlock .container .item {
+  #phasesBlock #tabcontent {
     height: fit-content;
-    margin-bottom: 20px;
-    .pricing {
-      position: relative !important;
-      margin: 20px auto;
-      bottom: 0 !important;
+    .info {
+      margin: 0px auto;
+      width: 50%;
+      min-height: 100px;
+    }
+  }
+  #contactPage
+  #topBlock .container.flex {
+    display: block;
+    padding: 0;
+    .left {
+      width: 92%;
+      margin-left: 0;
+      .backleft { margin-left: 0px; }
+     }
+     .right { width: 92%; }
+  }
+}
+
+@media @mobilescreenPort {
+  h2 { font-size: 5vw; padding: 20px 40px; }
+  form .half { width: 100%; }
+  #header {
+    .container { text-align: center; }
+    ul {
+      float: none;
+      display: flex;
+      justify-content: space-around;
+      li { margin-left: 0; }
     }
   }
   #footer {
@@ -780,13 +748,32 @@ form {
       }
     }
   }
-}
-
-@media @mobilescreen, @mobilescreenLand {
-  .bottom.unfixMobile {
-    position: relative;
-    bottom: auto;
-    margin-top: 40px;
-    .bottomArrow.left, .bottomArrow.right  { border-width: 0px 50vw 80px 50vw; }
+  #targetsBlock {
+    .container {
+      display: block;
+      .target { width: auto; }
+    }
   }
+  #servicesBlock {
+   .container {
+     display: block;
+     .item {
+       padding: 6%;
+       width: auto;
+     }
+   }
+ }
+ #phasesBlock {
+    padding-top: 30px;
+    h4 { display: none; }
+    #tabcontent {
+      .container { margin-top: 10vh;}
+      .info {
+        width: 100%;
+        margin-top: 0px;
+      }
+    }
+  }
+  #pricingBlock .container .item { width: 100%; }
+  #contactPage #topBlock .container.flex .left { margin-top: 16vh;}
 }

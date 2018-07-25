@@ -8,13 +8,23 @@ a {
   color: #000000;
   display: block;
 }
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-transition: "color 9999s ease-out, background-color 9999s ease-out";
+  -webkit-transition-delay: 9999s;
+}
 h1 {
   color: #000000;
   font-family: 'Anton', sans-serif;
   font-weight: normal;
   font-size: 50px;
   line-height: 60px;
-  letter-spacing: 4px;
+  letter-spacing: 2px;
   margin-bottom: 20px;
 }
 h2 {
@@ -235,6 +245,7 @@ form .formItem.line {
 }
 form .formItem.line label {
   position: absolute;
+  margin-top: 4px;
 }
 form .formItem label,
 form .formItem .value {
@@ -243,9 +254,9 @@ form .formItem .value {
   font-size: 14px;
 }
 form .formItem input {
-  width: 70%;
+  width: calc(100% - 55px);
   border: none;
-  padding-left: 30%;
+  padding-left: 55px;
   line-height: 25px;
   font-size: 14px;
   outline: none;
@@ -321,7 +332,7 @@ form .formItem.radio .radioItem .value {
   background-color: #FFF;
 }
 #header img {
-  width: 10vw;
+  width: 100px;
 }
 #header ul {
   float: right;
@@ -553,7 +564,7 @@ form .formItem.radio .radioItem .value {
 }
 #contactPage #topBlock .left,
 #contactPage #topBlock .right {
-  margin-top: 75px;
+  margin-top: 10vh;
   width: 40%;
   padding: 4%;
 }
@@ -570,9 +581,9 @@ form .formItem.radio .radioItem .value {
   margin-top: auto;
 }
 #contactPage #topBlock .left {
-  margin-top: 75px;
   width: calc(44% + 400px);
   margin-left: -400px;
+  height: 70vh;
 }
 #contactPage #topBlock .left .backleft {
   margin-left: 400px;
@@ -628,172 +639,154 @@ form .formItem.radio .radioItem .value {
   opacity: 0.7;
 }
 @media screen and (max-width: 1024px) {
-  h2 {
-    padding: 30px 12% 0px 12%;
+  h1 {
     font-size: 4vw;
+    line-height: 5vw;
   }
-  .bottom.unfixTablet {
-    position: relative;
-    bottom: auto;
-    margin-top: 40px;
+  h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
   }
-  .bottom.unfixTablet .btn {
-    position: relative;
-    bottom: 0;
+  .coasterSmall {
+    margin: 0px auto 15px auto;
+    padding: 12px;
+    font-size: 20px;
   }
-  .bottom.unfixTablet .bottomArrow.left,
-  .bottom.unfixTablet .bottomArrow.right {
-    border-width: 0px 50vw 80px 50vw;
+  form {
+    margin: 10px auto 0px auto;
   }
-  #topBlock .vertCenter .container {
-    width: 100%;
-    padding: 0 12%;
+  form .formItem.line {
+    margin-bottom: 15px;
   }
-  #topBlock .vertCenter h1 {
-    margin-top: -18%;
-    font-size: 7vw;
-    line-height: 9vw;
-  }
-  #topBlock .vertCenter .subtitle {
-    width: 50vw;
-    font-size: 14px;
-    line-height: 20px;
+  .card.onlyCard {
+    padding: 20px;
+    width: calc(60%);
   }
   #topBlock .vertCenter #coaster {
-    width: 60vh;
-    position: absolute;
-    margin-left: 36vw;
-    margin-top: -35px;
+    max-width: 300px;
   }
-  #topBlock .bottom {
-    position: absolute;
-    bottom: 0;
+  #targetsBlock .container {
+    margin-top: 0;
   }
-  #topBlock .bottom .btn {
-    bottom: 4vh;
-  }
-  #phasesBlock {
-    padding-top: 30px;
-  }
-  #phasesBlock h4 {
-    display: none;
-  }
-  #phasesBlock #tabcontent .container {
-    margin-top: 10vh;
-  }
-  #phasesBlock #tabcontent .info {
-    width: 100%;
-    margin-top: 0px;
+  #targetsBlock .container .target img {
+    margin-bottom: 0;
   }
   #servicesBlock .container .item {
-    padding: 6%;
-    width: 36%;
-    height: 36%;
-  }
-}
-@media screen and (max-width: 1024px) and (orientation: landscape), screen and (max-width: 415px) {
-  .bottom .btn {
-    position: relative;
-    visibility: hidden;
-  }
-  #topBlock {
-    min-height: 100vh;
-  }
-  #phasesBlock #tabcontent {
-    display: flex;
-    height: calc(100vh - 250px);
-  }
-  #phasesBlock #tabcontent .container {
-    align-self: center;
-    margin-top: 0;
+    padding: 2% 6%;
+    height: auto;
   }
   #phasesBlock #tabcontent img {
     display: none;
   }
-  #contactBlock #footer {
+  #phasesBlock #tabcontent .info {
+    margin: 6vh auto 0px auto;
+  }
+  #pricingBlock .container .item {
+    width: 47%;
+    margin-bottom: 20px;
+  }
+  #contactPage #header {
+    border-bottom: 1px #F5F5F5 solid;
+  }
+  #contactPage #topBlock .left {
+    height: auto;
+  }
+  #processPage #footer {
     position: relative;
   }
 }
-@media screen and (max-width: 1024px) and (orientation: landscape) {
+@media screen and (max-width: 853px) {
+  h1 {
+    margin-bottom: 10px;
+  }
   h2 {
-    font-size: 5vw;
+    margin-bottom: 10px;
   }
-  .container.unfixMobile .item {
-    width: 30% !important;
-    margin-bottom: 20px;
-  }
-  .container.unfixMobile:after {
-    content: "";
-    width: 30%;
-  }
-  #topBlock {
-    height: 100vh;
-    overflow: hidden;
-  }
-  #topBlock .vertCenter .container h1 {
-    margin-top: 4%;
-    font-size: 4vw;
-    line-height: 5vw;
+  h3 {
+    font-size: 14px;
     margin-bottom: 5px;
   }
-  #topBlock .vertCenter .container .subtitle {
-    font-size: 15px;
-    font-weight: normal;
-    line-height: 20px;
+  h4 {
+    font-size: 12px;
+  }
+  .btn.btn-primary {
+    margin-top: 10px;
+  }
+  .bottom .btn {
+    position: relative;
+    visibility: hidden;
+  }
+  #topBlock .vertCenter.container .above {
+    margin-top: 7vh;
+  }
+  #topBlock .vertCenter.container .above .subtitle {
+    font-size: 12px;
+    line-height: 14px;
   }
   #topBlock .vertCenter #coaster {
-    width: 71vh;
-    position: absolute;
-    margin-left: 24vw;
-    margin-top: 17px;
+    width: 40vw;
+    margin-top: 7vh;
   }
-  #topBlock .bottom {
-    bottom: -5px;
+  #processPage #topBlock .vertCenter {
+    height: auto;
+    margin-top: 65px;
   }
-}
-@media screen and (max-width: 415px) {
-  h2 {
-    font-size: 7vw;
+  #workshopBlock .card {
+    margin-top: 10vh;
   }
-  .container.unfixMobile {
-    display: block;
-  }
-  .container.unfixMobile .item {
-    width: auto !important ;
-  }
-  #topBlock {
-    min-height: 100vh;
-  }
-  #topBlock .vertCenter #coaster {
-    width: 30vh;
-    position: absolute;
-    margin-left: 49vw;
-    margin-top: -35px;
-  }
-  #topBlock .bottom .btn {
-    visibility: visible;
-  }
-  #targetsBlock .container {
-    display: block;
-  }
-  #targetsBlock .container .target {
-    width: auto;
+  #targetsBlock .container .target h4 {
+    margin-bottom: 5px;
   }
   #servicesBlock .container {
-    display: block;
+    flex-wrap: wrap;
   }
-  #servicesBlock .container .item {
-    padding: 6%;
-    width: auto;
+  #servicesBlock .container .card {
+    width: 35%;
   }
-  #pricingBlock .container .item {
+  #servicesBlock #footer {
+    position: relative;
+  }
+  #phasesBlock #tabcontent {
     height: fit-content;
-    margin-bottom: 20px;
   }
-  #pricingBlock .container .item .pricing {
-    position: relative !important;
-    margin: 20px auto;
-    bottom: 0 !important;
+  #phasesBlock #tabcontent .info {
+    margin: 0px auto;
+    width: 50%;
+    min-height: 100px;
+  }
+  #contactPage #topBlock .container.flex {
+    display: block;
+    padding: 0;
+  }
+  #contactPage #topBlock .container.flex .left {
+    width: 92%;
+    margin-left: 0;
+  }
+  #contactPage #topBlock .container.flex .left .backleft {
+    margin-left: 0px;
+  }
+  #contactPage #topBlock .container.flex .right {
+    width: 92%;
+  }
+}
+@media screen and (max-width: 414px) and (orientation: portrait) {
+  h2 {
+    font-size: 5vw;
+    padding: 20px 40px;
+  }
+  form .half {
+    width: 100%;
+  }
+  #header .container {
+    text-align: center;
+  }
+  #header ul {
+    float: none;
+    display: flex;
+    justify-content: space-around;
+  }
+  #header ul li {
+    margin-left: 0;
   }
   #footer {
     padding-bottom: 10Px;
@@ -812,15 +805,36 @@ form .formItem.radio .radioItem .value {
     top: -18px;
     margin-left: 0px;
   }
-}
-@media screen and (max-width: 415px), screen and (max-width: 824px) and (orientation: landscape) {
-  .bottom.unfixMobile {
-    position: relative;
-    bottom: auto;
-    margin-top: 40px;
+  #targetsBlock .container {
+    display: block;
   }
-  .bottom.unfixMobile .bottomArrow.left,
-  .bottom.unfixMobile .bottomArrow.right {
-    border-width: 0px 50vw 80px 50vw;
+  #targetsBlock .container .target {
+    width: auto;
+  }
+  #servicesBlock .container {
+    display: block;
+  }
+  #servicesBlock .container .item {
+    padding: 6%;
+    width: auto;
+  }
+  #phasesBlock {
+    padding-top: 30px;
+  }
+  #phasesBlock h4 {
+    display: none;
+  }
+  #phasesBlock #tabcontent .container {
+    margin-top: 10vh;
+  }
+  #phasesBlock #tabcontent .info {
+    width: 100%;
+    margin-top: 0px;
+  }
+  #pricingBlock .container .item {
+    width: 100%;
+  }
+  #contactPage #topBlock .container.flex .left {
+    margin-top: 16vh;
   }
 }

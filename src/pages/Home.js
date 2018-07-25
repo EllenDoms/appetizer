@@ -43,7 +43,7 @@ class Home extends Component {
             </div>
             <img id="coaster" src={coaster} alt="beer coaster with idea" />
           </div>
-          <div className="bottom unfixMobile">
+          <div className="bottom">
             <Link smooth to="/#workshopBlock" className="btn btn-secondary btn-arrow">Get started<div className="material-icons">arrow_downward</div></Link>
             <div className="bottomArrow left" />
             <div className="bottomArrow right" />
@@ -51,7 +51,7 @@ class Home extends Component {
         </div>
         <div id="workshopBlock" className="block light">
           <WorkshopCard />
-          <div className="bottom unfixMobile">
+          <div className="bottom">
             <Link smooth to="/#targetsBlock" className="btn btn-secondary btn-arrow">Learn more<div className="material-icons">arrow_downward</div></Link>
             <div className="bottomArrow left white" />
             <div className="bottomArrow right white" />
@@ -59,7 +59,7 @@ class Home extends Component {
         </div>
         <div id="targetsBlock" className="block">
           <Targets />
-          <div className="bottom unfixMobile">
+          <div className="bottom">
             <Link smooth to="/#servicesBlock" className="btn btn-secondary btn-arrow">More information<div className="material-icons">arrow_downward</div></Link>
             <div className="bottomArrow left" />
             <div className="bottomArrow right" />

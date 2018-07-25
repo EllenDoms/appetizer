@@ -57,7 +57,7 @@ export default class Pricing extends Component {
     return(
       <div>
         <h2>Deliverables</h2>
-        <div className="container flex unfixMobile">
+        <div className="container flex">
           {this.renderPricing()}
         </div>
       </div>

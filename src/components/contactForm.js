@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 import { sendContactForm } from '../actions';
+import HubspotForm from 'react-hubspot-form'
 
 class ContactForm extends Component {
   renderField(field) {
@@ -41,6 +42,7 @@ class ContactForm extends Component {
   }
   onSubmit = (values) => {
     values.phase = this.props.phase;
+    console.log(values)
     this.props.sendContactForm(values);
   }
   render() {
@@ -88,7 +90,7 @@ function validate(values) { //validate function will automatically be called by 
 function mapStateToProps(state){
   return {
     phase: state.state.phase,
-    submit: state.state.submit
+    submit: state.state.submit_contact
   };
 }
 

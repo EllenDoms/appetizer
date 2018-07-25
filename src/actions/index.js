@@ -1,6 +1,7 @@
 import { SET_BLOCK, SET_PHASE, SET_SUBMIT, SET_SUBMIT_WORKSHOP } from './types';
 
 import { databaseContactForm } from "../config/firebase";
+import { databaseWorkshopForm } from "../config/firebase";
 
 export function setActiveBlock(block) {
   console.log(block)

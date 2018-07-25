@@ -22,24 +22,35 @@ class WorkshopCard extends Component {
     this.props.sendWorkshopForm(values);
   }
   render() {
-    return(
-      <div className="card white onlyCard">
-        <h3>Step 1: Get your <span className="turk">FREE</span> workshop!</h3>
-        <p className="left">In only two hours we will help you to refine your idea and test the feasability. Your team will walk out of this workshop with an idea of how we can help, and practical advice on the technical approach!</p>
-        <form>
-          <Field label='Email' name='email' type="email" component={this.renderField} />
-          <Field label='Phone' name='phone' type="text" component={this.renderField} />
-          <button className="btn btn-primary center" type='submit'>Send</button>
-        </form>
-      </div>
-    )
+    const { handleSubmit, submit } = this.props;
+    if(!submit) {
+      return(
+        <div className="card white onlyCard">
+          <h3>Step 1: Get your <span className="turk">FREE</span> workshop!</h3>
+          <p className="left">In only two hours we will help you to refine your idea and test the feasability. Your team will walk out of this workshop with an idea of how we can help, and practical advice on the technical approach!</p>
+          <form onSubmit={handleSubmit(this.onSubmit)}>
+            <Field label='Email' name='email' type="email" component={this.renderField} />
+            <Field label='Phone' name='phone' type="text" component={this.renderField} />
+            <button className="btn btn-primary center" type='submit'>Send</button>
+          </form>
+        </div>
+      )
+    } else {
+      return(
+        <div className="card white onlyCard">
+          <h3>Step 1: Get your <span className="turk">FREE</span> workshop!</h3>
+          <p className="center">Awesome! We received your message and will get back to you as soon as possible!</p>
+        </div>
+      )
+    }
+
   }
 }
 
 function mapStateToProps(state){
   return {
     phase: state.state.phase,
-    submit: state.state.submit
+    submit: state.state.submit_workshop
   };
 }
 
