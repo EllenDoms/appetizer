@@ -109,6 +109,9 @@ li {
   color: #FFF;
   margin-top: 20px;
 }
+.btn.btn-primary.danger {
+  background-color: #D05C76;
+}
 .btn.btn-secondary {
   width: fit-content;
   margin: 0 auto;
@@ -172,7 +175,7 @@ li {
   padding: 0 10%;
   margin: 0 auto;
 }
-.container.flex {
+.flex {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -226,6 +229,42 @@ li {
   width: 100%;
   margin: 0 auto;
   padding: 30px;
+}
+#floatingBtn {
+  position: fixed;
+  bottom: 5vh;
+  right: 5vh;
+  padding: 15px;
+  z-index: 999;
+  background-color: #D05C76;
+  color: #FFF;
+  border-radius: 40px;
+  border: 4px #FFF solid;
+  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 40px 0 rgba(0, 0, 0, 0.09);
+  font-size: 12px;
+  line-height: 11px;
+  display: flex;
+  width: 200px;
+  transition: all 0.3s ease-out;
+  overflow: hidden;
+}
+#floatingBtn .number {
+  margin-left: 38px;
+  align-self: center;
+  font-size: 18px;
+  transition-delay: 3;
+  display: block;
+  width: 300px;
+  position: absolute;
+  transition: all 0.3s ease-out;
+  color: #FFF;
+}
+#floatingBtn.closed {
+  width: 24px;
+  height: 24px;
+}
+#floatingBtn.closed .number {
+  visibility: hidden;
 }
 form {
   max-width: 500px;
@@ -325,14 +364,14 @@ form .formItem.radio .radioItem .value {
 }
 #header {
   z-index: 2;
-  padding-top: 10px;
   position: absolute;
   left: 0;
   right: 0;
   background-color: #FFF;
 }
 #header img {
-  width: 100px;
+  width: 120px;
+  margin-top: 14px;
 }
 #header ul {
   float: right;
@@ -342,16 +381,99 @@ form .formItem.radio .radioItem .value {
   list-style: none;
   margin-left: 20px;
   margin-top: 0.5vw;
-  font-size: 12px;
+  font-size: 14px;
 }
 #header ul li a {
   color: #828282;
-  line-height: 38px;
+  line-height: 50px;
+  font-weight: bold;
+  letter-spacing: 0.5px;
 }
 #header ul li a:hover,
 #header ul li a.active {
   color: #000000;
   border-bottom: 3px solid #38C3DB;
+}
+#tabcontent {
+  padding: 25px;
+  background: #FFFFFF;
+  box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.12);
+  height: calc(100vh - 240px);
+}
+#tabcontent img {
+  width: 100%;
+}
+#tabcontent .info {
+  position: relative;
+  width: 34%;
+  margin: -140px auto 0px auto;
+  text-align: center;
+  min-height: 165px;
+}
+#testForm h3 {
+  margin-bottom: 3vh;
+}
+#testForm #stepLine {
+  width: 204px;
+  margin: 3vh auto 5vh auto;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+}
+#testForm #stepLine .item {
+  position: relative;
+  width: 8px;
+  height: 8px;
+  border-radius: 10px;
+  background: #DEE0E2;
+}
+#testForm #stepLine .item .line {
+  border-bottom: solid 2px #DEE0E2;
+  margin-left: -41px;
+  margin-top: 3px;
+  position: absolute;
+  width: 45px;
+}
+#testForm #stepLine .item.active {
+  background-color: #D05C76;
+}
+#testForm #stepLine .item.active .line {
+  border-bottom: solid 2px #D05C76;
+}
+#testForm #personas {
+  display: flex;
+  justify-content: space-between;
+}
+#testForm #personas .persona {
+  width: 25%;
+  padding: 20px;
+  border-top: 4px solid #38C3DB;
+}
+#testForm #personas .persona img {
+  width: 50%;
+  margin: 0 auto;
+  display: block;
+}
+#testForm #personas .persona:hover {
+  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 40px 0 rgba(0, 0, 0, 0.09);
+  cursor: pointer;
+}
+#testForm .formCard {
+  border-top: 4px solid #38C3DB;
+  max-width: 300px;
+}
+#testForm .formCard img {
+  width: 30%;
+  margin: 0 auto;
+  display: block;
+}
+#testForm .formCard .buttons {
+  display: flex;
+  justify-content: center;
+}
+#testForm .formCard .buttons .btn {
+  display: inline-block;
+  margin: 20px 10px;
 }
 #topBlock {
   background-color: #FFF;
@@ -470,35 +592,19 @@ form .formItem.radio .radioItem .value {
 #phasesBlock #tabs li:hover .illu {
   box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.12);
 }
-#phasesBlock #tabcontent {
-  padding: 25px;
-  background: #FFFFFF;
-  box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.12);
-  height: calc(100vh - 240px);
-}
-#phasesBlock #tabcontent img {
-  width: 100%;
-}
-#phasesBlock #tabcontent .info {
-  position: relative;
-  width: 34%;
-  margin: -140px auto 0px auto;
-  text-align: center;
-  min-height: 165px;
-}
-#servicesBlock .container {
+#servicesBlock .flex {
   margin-top: 4vh;
   display: flex;
   flex-wrap: nowrap;
   overflow-x: auto;
 }
-#servicesBlock .container .item {
-  height: 30vh;
-  width: 20%;
+#servicesBlock .flex .item {
+  height: 28vh;
+  width: 12%;
   margin-bottom: 4%;
-  padding: 6%;
+  padding: 2% 4%;
   flex: 0 0 auto;
-  margin-right: 2vw;
+  margin-left: 2vw;
 }
 #pricingBlock .container .item {
   width: 18%;
@@ -660,7 +766,7 @@ form .formItem.radio .radioItem .value {
   }
   .card.onlyCard {
     padding: 20px;
-    width: calc(60%);
+    width: calc(100% - 40px);
   }
   #topBlock .vertCenter #coaster {
     max-width: 300px;
@@ -716,6 +822,10 @@ form .formItem.radio .radioItem .value {
     position: relative;
     visibility: hidden;
   }
+  #floatingBtn {
+    right: 50%;
+    margin-right: -118px;
+  }
   #topBlock .vertCenter.container .above {
     margin-top: 7vh;
   }
@@ -729,7 +839,7 @@ form .formItem.radio .radioItem .value {
   }
   #processPage #topBlock .vertCenter {
     height: auto;
-    margin-top: 65px;
+    margin-top: 120px;
   }
   #workshopBlock .card {
     margin-top: 10vh;
@@ -822,12 +932,15 @@ form .formItem.radio .radioItem .value {
   #targetsBlock .container .target {
     width: auto;
   }
-  #servicesBlock .container {
+  #targetsBlock .bottom {
+    position: relative;
+  }
+  #servicesBlock .flex {
     display: block;
   }
-  #servicesBlock .container .item {
+  #servicesBlock .flex .item {
     padding: 6%;
-    width: auto;
+    width: calc(100% - 16%);
   }
   #phasesBlock {
     padding-top: 30px;

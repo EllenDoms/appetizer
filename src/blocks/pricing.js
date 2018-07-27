@@ -28,7 +28,7 @@ export default class Pricing extends Component {
     return pricing.map((item, i) => {
       const img = require(`../style/img/bottles/bottle-${i + 1}.png`);
       let priceBefore = [];
-      for (let j = 1; j < i && i != pricing.length - 1; j++ ) {
+      for (let j = 1; j < i && i !== pricing.length - 1; j++ ) {
         priceBefore.push(<p key={`priceBefore${j}`} className="italic">{pricing[j].h3}<br/>+</p>)
       }
       return(

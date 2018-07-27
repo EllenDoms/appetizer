@@ -43,7 +43,7 @@ export default class Services extends Component {
     return(
       <div>
         <h2>Our services</h2>
-        <div className="container flex">
+        <div className="flex">
           {this.renderServices()}
         </div>
       </div>

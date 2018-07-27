@@ -26,8 +26,8 @@ class WorkshopCard extends Component {
     if(!submit) {
       return(
         <div className="card white onlyCard">
-          <h3>Step 1: Get your <span className="turk">FREE</span> workshop!</h3>
-          <p className="left">In only two hours we will help you to refine your idea and test the feasability. Your team will walk out of this workshop with an idea of how we can help, and practical advice on the technical approach!</p>
+          <h3>Get your <span className="turk">FREE</span> workshop!</h3>
+          <p className="left">In only two hours we will help you to refine your idea and test the feasibility. Your team will walk out of this workshop with an idea of how we can help, and practical advice on the technical approach!</p>
           <form onSubmit={handleSubmit(this.onSubmit)}>
             <Field label='Email' name='email' type="email" component={this.renderField} />
             <Field label='Phone' name='phone' type="text" component={this.renderField} />

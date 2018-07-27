@@ -1,16 +1,31 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import ReactGA from 'react-ga';
-import { HashLink as Link } from 'react-router-hash-link';
 
 import { setActiveBlock } from '../actions';
 
 import Header from '../components/header';
-import ContactForm from '../components/contactForm';
+import ContactForm from '../blocks/contactForm';
 import Footer from '../components/footer';
 
 
 class Contact extends Component {
+  componentDidMount() {
+    window.addEventListener('scroll', this.handleScroll);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.handleScroll);
+  }
+  handleScroll = () => {
+    const oldPath = this.props.activeBlock;
+    const newPath = window.location.hash;
+    if (oldPath !== newPath) {
+      console.log(newPath)
+      this.props.setActiveBlock(newPath);
+      ReactGA.pageview(window.location.pathname + window.location.search + window.location.hash);
+    }
+  }
   render() {
     return(
       <div id="contactPage">

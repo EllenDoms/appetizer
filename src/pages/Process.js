@@ -6,19 +6,35 @@ import { HashLink as Link } from 'react-router-hash-link';
 import { setActiveBlock } from '../actions';
 
 import Header from '../components/header';
-import Phases from '../components/phases';
-import Pricing from '../components/pricing';
+import Phases from '../blocks/phases';
+import Pricing from '../blocks/pricing';
 import Footer from '../components/footer';
 import WorkshopCard from '../components/workshop';
-import logo from '../style/img/logo.png';
-import coaster from '../style/img/coaster.png';
+import FloatingBtn from '../components/floatingBtn';
 
 class Process extends Component {
+  componentDidMount() {
+    window.addEventListener('scroll', this.handleScroll);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.handleScroll);
+  }
+  handleScroll = () => {
+    const oldPath = this.props.activeBlock;
+    const newPath = window.location.hash;
+    if (oldPath !== newPath) {
+      console.log(newPath)
+      this.props.setActiveBlock(newPath);
+      ReactGA.pageview(window.location.pathname + window.location.search + window.location.hash);
+    }
+  }
   render() {
     return(
       <div id="processPage">
         <div id="topBlock" className="block img">
           <Header />
+          <FloatingBtn />
           <div className="vertCenter">
             <div className="container above">
               <h1 className="center"><span className="turk">Success</span> starts with <br />the right process.</h1>

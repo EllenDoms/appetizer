@@ -1,10 +1,9 @@
-import { SET_BLOCK, SET_PHASE, SET_SUBMIT, SET_SUBMIT_WORKSHOP } from './types';
+import { SET_BLOCK, SET_PHASE, SET_SUBMIT, SET_SUBMIT_WORKSHOP, SET_TEST_STEP } from './types';
 
 import { databaseContactForm } from "../config/firebase";
 import { databaseWorkshopForm } from "../config/firebase";
 
 export function setActiveBlock(block) {
-  console.log(block)
   return {
     type: SET_BLOCK,
     payload: block
@@ -36,4 +35,13 @@ export function sendWorkshopForm(values) {
     }
   })
   .catch(error => console.log('BAD', error))
+}
+
+export function setFormStep(step, answer) {
+  return {
+    type: SET_TEST_STEP,
+    payload: answer,
+    key: step,
+
+  }
 }
