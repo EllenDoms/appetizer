@@ -475,6 +475,15 @@ form .formItem.radio .radioItem .value {
   display: inline-block;
   margin: 20px 10px;
 }
+#testForm .tips .percentage {
+  float: left;
+  font-size: 30px;
+  font-weight: bold;
+  color: #38C3DB;
+}
+#testForm .tips p {
+  text-align: left;
+}
 #topBlock {
   background-color: #FFF;
 }

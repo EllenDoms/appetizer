@@ -45,3 +45,7 @@ export function setFormStep(step, answer) {
 
   }
 }
+
+export function sendTipsForm(values) {
+
+}
