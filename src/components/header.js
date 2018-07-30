@@ -4,15 +4,30 @@ import { NavLink as Link } from 'react-router-dom'; //navigate in app
 import logoHori from '../style/img/logo_hori_dark.png';
 
 export default class Header extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { mobile: "closed" }
+  }
+  slideOpen() { this.setState({ mobile: "open" })}
+  slideClosed() { this.setState({ mobile: "closed" })}
   render() {
     return (
-      <div id="header">
-        <div className="container">
-          <img id="logo" src={logoHori} alt="logo" />
-          <ul className="nav">
+      <div id="header" className={this.state.mobile}>
+        <div id="mobile">
+          <div className="container"><div id="hamburger" className="material-icons" onClick={() => {this.slideOpen()}}>dehaze</div></div>
+          <ul className="inner nav container" onClick={() => {this.slideClosed()}}>
             <li><Link exact activeClassName="active" to={'/'}> Home</Link></li>
             <li><Link activeClassName="active" to={'/process'}>How it works</Link></li>
-            {/* <li><Link activeClassName="active" to={'/test'}>Take the test</Link></li> */}
+            <li><Link activeClassName="active" to={'/tips'}>Take the test</Link></li>
+            <li><Link activeClassName="active" to={'/contact'}>Contact us</Link></li>
+          </ul>
+        </div>
+        <div className="container">
+          <img id="logo" src={logoHori} alt="logo" />
+          <ul id="wideNav" className="nav">
+            <li><Link exact activeClassName="active" to={'/'}> Home</Link></li>
+            <li><Link activeClassName="active" to={'/process'}>How it works</Link></li>
+            <li><Link activeClassName="active" to={'/tips'}>Take the test</Link></li>
             <li><Link activeClassName="active" to={'/contact'}>Contact us</Link></li>
           </ul>
         </div>

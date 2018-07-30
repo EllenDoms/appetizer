@@ -7,6 +7,7 @@ import { setActiveBlock } from '../actions';
 
 import Header from '../components/header';
 import Targets from '../blocks/targets';
+import TipsForm from '../blocks/tipsForm';
 import Services from '../components/services';
 import Footer from '../components/footer';
 import FloatingBtn from '../components/floatingBtn';
@@ -61,7 +62,7 @@ class Home extends Component {
         <div id="targetsBlock" className="block">
           <Targets />
           <div className="bottom">
-            <Link smooth to="/#servicesBlock" className="btn btn-secondary btn-arrow">More information<div className="material-icons">arrow_downward</div></Link>
+            <Link smooth to="/#servicesBlock" className="btn btn-secondary btn-arrow">More information!<div className="material-icons">arrow_downward</div></Link>
             <div className="bottomArrow left" />
             <div className="bottomArrow right" />
           </div>

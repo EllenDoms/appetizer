@@ -13,6 +13,7 @@ out:  App.css
 @shadowBtn: 0 4px 8px 0 rgba(0,0,0,0.2);
 @shadowCoaster: 0 3px 25px 0 rgba(0, 0, 0, 0.2);
 @transition: all 0.3s ease-out;
+@overlay: rgba(0, 0, 0, 0.75);
 
 @tabletscreen: ~"screen and (max-width: 1024px)";
 @mobilescreen: ~"screen and (max-width: 853px)";
@@ -87,9 +88,7 @@ p, li {
   line-height: 20px;
 }
 
-li {
-  text-align: left;
-}
+li { text-align: left; }
 
 .accent {
   font-weight: bold;
@@ -147,7 +146,6 @@ li {
     line-height: 40px;
     border-radius: 20px;
     font-size: 20px;
-
     position: relative;
     opacity: 1;
     &:hover {
@@ -161,7 +159,7 @@ li {
   margin: 0;
   min-height: 100vh;
   position: relative;
-  overflow-x: hidden;
+  overflow: hidden;
   .bottomArrow {
     border-width: 0px 50vw 15vh 50vw;
     border-style: solid;
@@ -240,12 +238,34 @@ li {
   }
 }
 
+#overlay {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  position: fixed;
+  z-index: 9;
+  #popup {
+    align-self: flex-end;
+    background-color: #FFF;
+    box-shadow: @shadowCard;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    p { align-self: center; }
+    .btn {
+      margin-top: 0;
+      width: 110px;
+      margin-left: 40px;
+    }
+  }
+}
+
 #floatingBtn {
   position: fixed;
   bottom: 5vh;
   right: 5vh;
   padding: 15px;
-  z-index: 999;
+  z-index: 8;
   background-color: @red;
   color: #FFF;
   border-radius: 40px;
@@ -370,6 +390,7 @@ form {
   left: 0;
   right: 0;
   background-color: #FFF;
+  #mobile { display: none; }
   img {
     width: 120px;
     margin-top: 14px;
@@ -408,7 +429,7 @@ form {
   }
 }
 
-#testForm {
+#tipsForm {
   h3 { margin-bottom: 3vh; }
   #stepLine {
     width: 204px;
@@ -424,10 +445,10 @@ form {
       background: @light-3;
       .line {
         border-bottom: solid 2px @light-3;
-        margin-left: -41px;
+        margin-left: -31px;
         margin-top: 3px;
         position: absolute;
-        width: 45px;
+        width: 31px;
       }
       &.active {
         background-color: @red;
@@ -459,14 +480,19 @@ form {
       .btn { display: inline-block; margin: 20px 10px; }
     }
   }
-  .tips {
-    .percentage {
-      float: left;
-      font-size: 30px;
-      font-weight: bold;
-      color: @p-turk;
+  #tips {
+    .tip {
+      margin-bottom: 2vh;
+      .percentage {
+        float: left;
+        font-size: 30px;
+        font-weight: bold;
+        color: @p-turk;
+        margin-right: 20px;
+      }
+      p { text-align: left; .bold { font-weight: bold; } }
     }
-    p { text-align: left; }
+
   }
 }
 
@@ -768,6 +794,10 @@ form {
     #header { border-bottom: 1px @light-1 solid; }
     #topBlock .left { height: auto; }
   }
+  #tipsPage {
+    #tabcontent { height: auto}
+    #footer { position: relative; }
+  }
   #processPage #footer { position: relative; }
 }
 
@@ -778,9 +808,15 @@ form {
   h4 { font-size: 12px;  }
   .btn.btn-primary { margin-top: 10px; }
   .bottom .btn { position: relative; visibility: hidden; }
-  #floatingBtn {
-    right: 50%;
-    margin-right: -118px;
+  #tipsForm {
+    #personas {
+      display: block;
+      .persona {
+        width: ~"calc(100% - 40px)";
+        margin-bottom: 20px;
+        img { display: none; }
+      }
+    }
   }
   #topBlock {
     .vertCenter {
@@ -793,7 +829,7 @@ form {
   }
   #processPage #topBlock .vertCenter {
     height: auto;
-    margin-top: 120px;
+    margin-top: 75px;
   }
   #workshopBlock .card { margin-top: 10vh; }
   #targetsBlock .container .target h4 { margin-bottom: 5px; }
@@ -830,8 +866,52 @@ form {
 @media @mobilescreenPort {
   h1 { font-size: 7vw; line-height: 9vw; }
   h2 { font-size: 5vw; padding: 20px 40px; }
-  form .half { width: 100%; }
+  form {
+    z-index: 0;
+    position: relative;
+    .half { width: 100%; }
+  }
+  #floatingBtn {
+    right: 50%;
+    margin-right: -118px;
+  }
+  #overlay #popup { display: block; .btn { margin-left: auto; } }
   #header {
+    #wideNav { display: none; }
+    #mobile {
+      display: block;
+      .container { position: absolute; }
+      #hamburger {
+        position: absolute;
+        margin-top: 27px;
+      }
+      .inner {
+        background-color: #FFF;
+        height: 100vh;
+        width: 65%;
+        padding-top: 40px;
+        box-shadow: @shadowCard;
+        display: block;
+        transition: @transition;
+        li {
+          display: block;
+          width: 100%;
+          a.active { border-bottom: none; color: @p-turk; }
+        }
+      }
+    }
+    &.closed #mobile {
+      background: none;
+      .inner { transform: translateX(-115%); }
+    }
+    &.open #mobile {
+      z-index: 999;
+      height: 100vh;
+      width: 100vw;
+      background: @overlay;
+      position: absolute;
+      .inner { transform: translateX(0); }
+    }
     .container { text-align: center; }
     ul {
       float: none;
@@ -862,7 +942,7 @@ form {
       width: 70vw;
     }
   }
-
+  #tipsBlock #tabcontent { height: auto; }
   #targetsBlock {
     .container {
       display: block;

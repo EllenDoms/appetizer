@@ -1,7 +1,6 @@
-import { SET_BLOCK, SET_PHASE, SET_SUBMIT, SET_SUBMIT_WORKSHOP, SET_TEST_STEP } from './types';
+import { SET_BLOCK, SET_PHASE, SET_SUBMIT, SET_SUBMIT_WORKSHOP, SET_TIPS_STEP } from './types';
 
-import { databaseContactForm } from "../config/firebase";
-import { databaseWorkshopForm } from "../config/firebase";
+import { databaseContactForm, databaseWorkshopForm, databaseTipsForm  } from "../config/firebase";
 
 export function setActiveBlock(block) {
   return {
@@ -39,7 +38,7 @@ export function sendWorkshopForm(values) {
 
 export function setFormStep(step, answer) {
   return {
-    type: SET_TEST_STEP,
+    type: SET_TIPS_STEP,
     payload: answer,
     key: step,
 
@@ -47,5 +46,6 @@ export function setFormStep(step, answer) {
 }
 
 export function sendTipsForm(values) {
-
+  return databaseTipsForm.push(values)
+    .catch(error => console.log('BAD', error))
 }

@@ -4,7 +4,7 @@ export default class FormSteps extends Component {
   render() {
     const { step, answer } = this.props;
     console.log(step, answer)
-    const img = require(`../style/img/testForm/step${step}.png`);
+    const img = require(`../style/img/tipsForm/step${step}.png`);
     return (
       <div className="card onlyCard formCard item">
         <img src={img} />
