@@ -34,7 +34,7 @@ class App extends Component {
 }
   render() {
     const { gdpr } = this.state;
-    console.log(gdpr);
+
     return (
       <HashRouter>
         <div id='app'>
