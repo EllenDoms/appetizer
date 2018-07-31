@@ -957,7 +957,7 @@ form .formItem.radio .radioItem .value {
     display: block;
   }
   #overlay #popup .btn {
-    margin-left: auto;
+    margin: 20px auto;
   }
   #header #wideNav {
     display: none;
