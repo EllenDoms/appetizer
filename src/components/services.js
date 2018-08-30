@@ -20,7 +20,7 @@ const services = [
   { icon: "lock",
     color: "#FEDB5C",
     h4: "Social authentication",
-    text: "Authentication with Google, Facebook and more!"},
+    text: "Let your users register and log in with the press of a button - through their Facebook or Google accounts"},
   { icon: "show_chart",
     color: "#6574B5",
     h4: "Analytics",
