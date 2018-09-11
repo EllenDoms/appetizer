@@ -48,23 +48,32 @@ class TipsForm extends Component {
     return rows;
   }
   renderStep(activeStep) {
+    const { handleSubmit, submit } = this.props;
     if (activeStep === 0) {
       return(
         <div className="inner">
           <h3>I am someone who...</h3>
           <div id="personas">{this.renderStep1()}</div>
+          <form className="hidden" onSubmit={handleSubmit(this.onSubmit)} id="formTip" html_id="formTip">
+            <Field label='First Name' className="half" name='fname' type="text" component={this.renderField} />
+            <Field label='Last Name' className="half" name='lname' type="text" component={this.renderField} />
+            <Field label='Email' className="half" name='email' type="email" component={this.renderField} />
+            <Field label='Phone' className="half" name='phone' type="text" component={this.renderField} />
+            <button className="btn btn-primary center" type='submit'>Send</button>
+          </form>
         </div>
       )
     } else if ( activeStep === 5) {
-      const { handleSubmit, submitSucceeded } = this.props;
-      if(!submitSucceeded) {
+      if(!submit) {
         return(
           <div className="inner">
             <div id="tips"> {this.renderStep5()} </div>
             <h3>Beat the odds. Contact us now!</h3>
-            <form onSubmit={handleSubmit(this.onSubmit)}>
-              <Field label='Email' name='email' type="email" component={this.renderField} />
-              <Field label='Phone' name='phone' type="text" component={this.renderField} />
+            <form onSubmit={handleSubmit(this.onSubmit)} id="formTip" html_id="formTip">
+              <Field label='First Name' className="half" name='fname' type="text" component={this.renderField} />
+              <Field label='Last Name' className="half" name='lname' type="text" component={this.renderField} />
+              <Field label='Email' className="half" name='email' type="email" component={this.renderField} />
+              <Field label='Phone' className="half" name='phone' type="text" component={this.renderField} />
               <button className="btn btn-primary center" type='submit'>Send</button>
             </form>
           </div>
@@ -82,6 +91,13 @@ class TipsForm extends Component {
         <div className="inner">
           <h3>{formSteps[step].title}</h3>
           <FormCard step={step} answer={formSteps[step].answer} buttonClick={(step, answer) => {this.saveStep(step, answer)}} />
+          <form className="hidden" onSubmit={handleSubmit(this.onSubmit)} id="formTip" html_id="formTip">
+            <Field label='First Name' className="half" name='fname' type="text" component={this.renderField} />
+            <Field label='Last Name' className="half" name='lname' type="text" component={this.renderField} />
+            <Field label='Email' className="half" name='email' type="email" component={this.renderField} />
+            <Field label='Phone' className="half" name='phone' type="text" component={this.renderField} />
+            <button className="btn btn-primary center" type='submit'>Send</button>
+          </form>
         </div>
       )
     }
@@ -122,12 +138,12 @@ class TipsForm extends Component {
     }
   }
   renderField(field) {
-    const { type, meta: { touched, error} } = field;
+    const { name, type, meta: { touched, error} } = field;
     const classNames= `half formItem line ${touched && error ? 'has-danger' : ''} `;
     return (
       <div className={classNames}>
-        <label>{field.label}</label>
-        <input type={type} {...field.input} ></input>
+        <label id={field.input.name}>{field.label}</label>
+        <input property={name} type={type} {...field.input} ></input>
         <div className='text-help'>
           {touched ? error : ''}
         </div>
@@ -136,6 +152,7 @@ class TipsForm extends Component {
   }
   saveStep(step, answer) { this.props.setFormStep(step, answer); }
   onSubmit = (values) => {
+    console.log(values)
     values.tips = {
       company: this.props.form[0],
       problem: this.props.form[1],
@@ -167,6 +184,8 @@ class TipsForm extends Component {
 function validate(values) { //validate function will automatically be called by redux-form
   const errors = {};
   // validate input (values)
+  if(!values.fname) { errors.fname = 'We need a first name!'; }
+  if(!values.lname) { errors.lname = 'We need a last name!'; }
   if(!values.phone && !values.email) { errors.email = 'We need a phone number or email!'; }
   // if errors is empty, form is fine to submit
   // if errors not empty: form is invalid
@@ -175,7 +194,8 @@ function validate(values) { //validate function will automatically be called by 
 
 function mapStateToProps(state){
   return {
-    form: state.state.tipsForm
+    form: state.state.tipsForm,
+    submit: state.state.submit_tips
   };
 }
 

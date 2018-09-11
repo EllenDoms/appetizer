@@ -1,9 +1,10 @@
-import { SET_BLOCK, SET_PHASE, SET_SUBMIT, SET_SUBMIT_WORKSHOP, SET_TIPS_STEP } from "../actions/types";
+import { SET_BLOCK, SET_PHASE, SET_SUBMIT, SET_SUBMIT_WORKSHOP, SET_TIPS_STEP, SET_SUBMIT_TIPS } from "../actions/types";
 
 const initialState = {
   phase: 1,
   submit_contact: false,
   submit_workshop: false,
+  submit_tips: false,
   tipsForm: [ ],
   block: ""
 }
@@ -34,6 +35,11 @@ export default (state = initialState, action) => {
       return {
         ...state,
         tipsForm: [...state.tipsForm, action.payload]
+      }
+    case SET_SUBMIT_TIPS:
+      return {
+        ...state,
+        submit_tips: true
       }
     default:
       return state;

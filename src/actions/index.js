@@ -1,4 +1,4 @@
-import { SET_BLOCK, SET_PHASE, SET_SUBMIT, SET_SUBMIT_WORKSHOP, SET_TIPS_STEP } from './types';
+import { SET_BLOCK, SET_PHASE, SET_SUBMIT, SET_SUBMIT_WORKSHOP, SET_TIPS_STEP, SET_SUBMIT_TIPS } from './types';
 
 import { databaseContactForm, databaseWorkshopForm, databaseTipsForm  } from "../config/firebase";
 
@@ -47,5 +47,10 @@ export function setFormStep(step, answer) {
 
 export function sendTipsForm(values) {
   return databaseTipsForm.push(values)
+    .then(data => {
+      return {
+        type: SET_SUBMIT_TIPS
+      }
+    })
     .catch(error => console.log('BAD', error))
 }
