@@ -308,7 +308,7 @@ form {
     position: relative;
     &.line {
       border-bottom: 2px solid @light-2;
-      margin-bottom: 35px;
+      margin-bottom: 25px;
       label { position: absolute; margin-top: 4px; }
     }
     label, .value {
@@ -340,7 +340,7 @@ form {
       font-style: italic;
       font-size: 12px;
       float: right;
-      margin-top: 8px;
+      margin-top: 4px;
       position: absolute;
       right: 0;
     }
@@ -483,6 +483,9 @@ form {
     }
   }
   #tips {
+    margin-bottom: 2vh;
+    max-height: 20vh;
+    overflow: scroll;
     .tip {
       margin-bottom: 2vh;
       .percentage {

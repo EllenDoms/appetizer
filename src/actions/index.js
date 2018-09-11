@@ -37,7 +37,6 @@ export function sendWorkshopForm(values) {
 }
 
 export function addFormCount(count) {
-  console.log(count)
   return {
     type: ADD_FORM_COUNT,
     payload: count

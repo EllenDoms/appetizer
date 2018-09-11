@@ -6,8 +6,8 @@ const initialState = {
   submit_workshop: false,
   submit_tips: false,
   tipsActiveStep: 0,
-  tipsCompany: "",
-  tipsForm: [ ],
+  website_tips_company: "",
+  website_tips: [ ],
   block: ""
 }
 
@@ -41,13 +41,13 @@ export default (state = initialState, action) => {
     case SET_TIPS_STEP:
       return {
         ...state,
-        tipsForm: [...state.tipsForm, action.payload]
+        website_tips: [...state.website_tips, action.payload]
       }
-      case SET_TIPS_COMPANY:
-        return {
-          ...state,
-          tipsCompany: action.payload
-        }
+    case SET_TIPS_COMPANY:
+      return {
+        ...state,
+        website_tips_company: action.payload
+      }
     case SET_SUBMIT_TIPS:
       return {
         ...state,

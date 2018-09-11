@@ -8,25 +8,29 @@ import FormCard from '../components/tipsFormCard.js';
 
 const formSteps = [
   // problem
-  { title: "My million dollar idea...",
+  { tag: "problem",
+    title: "My million dollar idea...",
     answer: "...is solving a problem that a lot of people have.",
     percent: 42,
     tip: "...of startups fail because they are not solving a real problem! Tackling problems that are interesting to solve rather than those that serve a market need is the No. 1 reason for failure! ",
     bold: "We help you get to the problem and solve it in the best way!" },
   // price
-  { title: "The price tag...",
+  { tag: "price",
+    title: "The price tag...",
     answer: "...is something that I calculated already.",
     percent: 19,
     tip: "...of startups fail because of their budget ! Money and time are finite and running out of it is a big issue for startups. Spend your money wise and get funding in an early stage. ",
     bold: "With us you know what you’ll get for each budget, from the start." },
   // Skills
-  { title: "My team...",
+  { tag: "skills",
+    title: "My team...",
     answer: "...has people with completely different skillsets.",
     percent: 29,
     tip: "...of startups fail because they son't have the skills. A diverse team is critical to the success of a startup. You don’t have the technical skills but you do have a different expertise? ",
     bold: "Good, because we have the technical part covered." },
   // Competitors
-  { title: "The competition...",
+  { tag: "competitors",
+    title: "The competition...",
     answer: "...doesn't exist, or lacks certain features.",
     percent: 23,
     tip: "...of startups fail because they don't do a good market research. There will always be competition. Starting with a good market research will help you to differentiate yourself.",
@@ -70,11 +74,41 @@ class TipsForm extends Component {
         </div>
       )
     } else if ( activeStep === 5) {
-        return(
+      const { website_tips } = this.props;
+      let tips = [];
+      for (let i = 0; i < website_tips.length; i++ ) {
+        console.log(website_tips[i]);
+        // find website_tip in array formSteps
+        let selected = formSteps.find(select => select.tag === website_tips[i])
+        tips.push(selected);
+      }
+      if(tips.length === 0) {
+        return (
           <div className="inner">
-            <div id="tips"> {this.renderStep5()} </div>
+            <div id="tips">
+              <p>Looks like you already thought about a lot of things and are on to a good start! Of course, there are more things to keep in mind.</p>
+            </div>
           </div>
         )
+      } else {
+        return (
+          <div className="inner">
+            <div id="tips">
+              {
+                tips.map((tip,i) => {
+                  return (
+                    <div className='tip' key={'tip' + i}>
+                      <div className='percentage'>{tip.percent} %</div>
+                      <p>{tip.tip} <span className='bold'>{tip.bold}</span></p>
+                    </div>
+                  )
+                })
+              }
+            </div>
+          </div>
+        )
+      }
+
     } else { //steps 1-4
       const step = activeStep - 1;
       return(
@@ -86,7 +120,7 @@ class TipsForm extends Component {
     }
   }
   renderForm(step) {
-    let { form, handleSubmit, submit } = this.props;
+    let { website_tips, website_tips_company, handleSubmit, submit } = this.props;
     let formVisible = step < 5 ? 'hidden' : 'visible';
     if(!submit) {
       return (
@@ -97,7 +131,10 @@ class TipsForm extends Component {
             <Field label='Last Name' className="half" name='lname' type="text" component={this.renderField} />
             <Field label='Email' className="half" name='email' type="email" component={this.renderField} />
             <Field label='Phone' className="half" name='phone' type="text" component={this.renderField} />
-            <Field label='Website tips' className="half" value='test' defaultValue='test' name='website_tips' type="text" component={this.renderField} />
+            <div className="hidden">
+              <Field label='Website tips' className="half" defaultValue={website_tips} name='website_tips' type="text" component={this.renderField} />
+              <Field label='Website company' className="half" defaultValue={website_tips_company} name='website_company' type="text" component={this.renderField} />
+            </div>
             <button className="btn btn-primary center" type='submit'>Send</button>
           </form>
         </div>
@@ -106,41 +143,19 @@ class TipsForm extends Component {
     } else {
       return(
         <div>
+          <h3>Beat the odds. Contact us now!</h3>
           <p className="center">Awesome! We received your message and will get back to you as soon as possible!</p>
         </div>
       )
     }
   }
-  renderStep5 () {
-    const tips = [];
-    for (let i = 1; i < 5; i++ ) {
-      if (this.props.form[i] === true) {
-        const key = i - 1;
-        tips.push(formSteps[key]);
-      }
-    }
-    if(tips == "") {
-      return (
-        <p>Looks like you already thought about a lot of things and are on to a good start! Of course, there are more things to keep in mind.</p>
-      )
-    } else {
-      return tips.map((tip,i) => {
-        return (
-          <div className='tip' key={'tip' + i}>
-            <div className='percentage'>{tip.percent} %</div>
-            <p>{tip.tip} <span className='bold'>{tip.bold}</span></p>
-          </div>
-        )
-      })
-    }
-  }
   renderField(field) {
-    const { name, type, meta: { touched, error} } = field;
+    const { name, type, meta: { touched, error}, defaultValue } = field;
     const classNames= `half formItem line ${touched && error ? 'has-danger' : ''} `;
     return (
       <div className={classNames}>
         <label id={field.input.name}>{field.label}</label>
-        <input property={name} type={type} {...field.input} ></input>
+        <input property={name} type={type} {...field.input} value={defaultValue} ></input>
         <div className='text-help'>
           {touched ? error : ''}
         </div>
@@ -158,11 +173,9 @@ class TipsForm extends Component {
     let newStep = this.props.tipsActiveStep + 1;
     this.props.addFormCount(newStep);
   }
-  onSubmit = (values) => {
-    this.props.sendTipsForm(values);
-  }
+  onSubmit = (values) => { this.props.sendTipsForm(values); }
   render() {
-    let { form, tipsActiveStep } = this.props;
+    let { website_tips, tipsActiveStep } = this.props;
     return(
         <div>
           <h2>Test your idea now!</h2>
@@ -193,7 +206,8 @@ function validate(values) { //validate function will automatically be called by 
 
 function mapStateToProps(state){
   return {
-    form: state.state.tipsForm,
+    website_tips: state.state.website_tips,
+    website_tips_company: state.state.website_tips_company,
     submit: state.state.submit_tips,
     tipsActiveStep: state.state.tipsActiveStep,
   };

@@ -303,7 +303,7 @@ form .formItem {
 }
 form .formItem.line {
   border-bottom: 2px solid #EBEDEE;
-  margin-bottom: 35px;
+  margin-bottom: 25px;
 }
 form .formItem.line label {
   position: absolute;
@@ -314,7 +314,7 @@ form .formItem .value {
   width: 67px;
   color: #000000;
   font-size: 11px;
-  line-height: 17px;
+  line-height: 18px;
   text-transform: uppercase;
 }
 form .formItem input {
@@ -339,7 +339,7 @@ form .formItem .text-help {
   font-style: italic;
   font-size: 12px;
   float: right;
-  margin-top: 8px;
+  margin-top: 4px;
   position: absolute;
   right: 0;
 }
@@ -502,6 +502,11 @@ form .formItem.radio .radioItem .value {
 #tipsForm .formCard .buttons .btn {
   display: inline-block;
   margin: 20px 10px;
+}
+#tipsForm #tips {
+  margin-bottom: 2vh;
+  max-height: 20vh;
+  overflow: scroll;
 }
 #tipsForm #tips .tip {
   margin-bottom: 2vh;

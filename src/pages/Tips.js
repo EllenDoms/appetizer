@@ -46,7 +46,7 @@ class Tips extends Component {
         </div>
         <div id="tipsFormBlock" className="block light last">
           <TipsForm />
-          <Footer page='' />
+          <Footer page='tips' />
         </div>
       </div>
     )
