@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import { sendTipsForm } from '../actions';
 
-import { setFormStep } from '../actions';
+import { addFormCount, setFormStep, saveCompany } from '../actions';
 import FormCard from '../components/tipsFormCard.js';
 
 const formSteps = [
@@ -50,69 +50,66 @@ class TipsForm extends Component {
   renderStep(activeStep) {
     const { handleSubmit, submit } = this.props;
     if (activeStep === 0) {
+      const options = ["...has an awesome idea!", "...owns a start-up but needs some help.", "...works in a company that has a new project."];
       return(
         <div className="inner">
           <h3>I am someone who...</h3>
-          <div id="personas">{this.renderStep1()}</div>
-          <form className="hidden" onSubmit={handleSubmit(this.onSubmit)} id="formTip" html_id="formTip">
-            <Field label='First Name' className="half" name='fname' type="text" component={this.renderField} />
-            <Field label='Last Name' className="half" name='lname' type="text" component={this.renderField} />
-            <Field label='Email' className="half" name='email' type="email" component={this.renderField} />
-            <Field label='Phone' className="half" name='phone' type="text" component={this.renderField} />
-            <button className="btn btn-primary center" type='submit'>Send</button>
-          </form>
+          <div id="personas">
+            {
+              options.map((option, key) => {
+                const img = require(`../style/img/personas/persona${key}.png`);
+                return(
+                  <div className="card item persona" key={key} onClick={() => {this.saveCompany(option)}}>
+                    <img src={img} />
+                    <p>{option}</p>
+                  </div>
+                )
+              })
+            }
+          </div>
         </div>
       )
     } else if ( activeStep === 5) {
-      if(!submit) {
         return(
           <div className="inner">
             <div id="tips"> {this.renderStep5()} </div>
-            <h3>Beat the odds. Contact us now!</h3>
-            <form onSubmit={handleSubmit(this.onSubmit)} id="formTip" html_id="formTip">
-              <Field label='First Name' className="half" name='fname' type="text" component={this.renderField} />
-              <Field label='Last Name' className="half" name='lname' type="text" component={this.renderField} />
-              <Field label='Email' className="half" name='email' type="email" component={this.renderField} />
-              <Field label='Phone' className="half" name='phone' type="text" component={this.renderField} />
-              <button className="btn btn-primary center" type='submit'>Send</button>
-            </form>
           </div>
         )
-      } else {
-        return(
-          <div>
-            <p className="center">Awesome! We received your message and will get back to you as soon as possible!</p>
-          </div>
-        )
-      }
-    } else {
-      const step = activeStep - 1
+    } else { //steps 1-4
+      const step = activeStep - 1;
       return(
         <div className="inner">
           <h3>{formSteps[step].title}</h3>
           <FormCard step={step} answer={formSteps[step].answer} buttonClick={(step, answer) => {this.saveStep(step, answer)}} />
-          <form className="hidden" onSubmit={handleSubmit(this.onSubmit)} id="formTip" html_id="formTip">
-            <Field label='First Name' className="half" name='fname' type="text" component={this.renderField} />
-            <Field label='Last Name' className="half" name='lname' type="text" component={this.renderField} />
-            <Field label='Email' className="half" name='email' type="email" component={this.renderField} />
-            <Field label='Phone' className="half" name='phone' type="text" component={this.renderField} />
-            <button className="btn btn-primary center" type='submit'>Send</button>
-          </form>
         </div>
       )
     }
   }
-  renderStep1 () {
-    const options = ["...has an awesome idea!", "...owns a start-up but needs some help.", "...works in a company that has a new project."];
-    return options.map((option, key) => {
-      const img = require(`../style/img/personas/persona${key}.png`);
+  renderForm(step) {
+    let { form, handleSubmit, submit } = this.props;
+    let formVisible = step < 5 ? 'hidden' : 'visible';
+    if(!submit) {
+      return (
+        <div className={formVisible}>
+          <h3>Beat the odds. Contact us now!</h3>
+          <form onSubmit={handleSubmit(this.onSubmit)} id="formTip" html_id="formTip">
+            <Field label='First Name' className="half" name='fname' type="text" component={this.renderField} />
+            <Field label='Last Name' className="half" name='lname' type="text" component={this.renderField} />
+            <Field label='Email' className="half" name='email' type="email" component={this.renderField} />
+            <Field label='Phone' className="half" name='phone' type="text" component={this.renderField} />
+            <Field label='Website tips' className="half" value='test' defaultValue='test' name='website_tips' type="text" component={this.renderField} />
+            <button className="btn btn-primary center" type='submit'>Send</button>
+          </form>
+        </div>
+
+      )
+    } else {
       return(
-        <div className="card item persona" key={key} onClick={() => {this.saveStep(0, option)}}>
-          <img src={img} />
-          <p>{option}</p>
+        <div>
+          <p className="center">Awesome! We received your message and will get back to you as soon as possible!</p>
         </div>
       )
-    })
+    }
   }
   renderStep5 () {
     const tips = [];
@@ -150,29 +147,31 @@ class TipsForm extends Component {
       </div>
     )
   }
-  saveStep(step, answer) { this.props.setFormStep(step, answer); }
+  saveCompany(option) {
+    this.props.saveCompany(option);
+    let newStep = this.props.tipsActiveStep + 1;
+    this.props.addFormCount(newStep);
+  }
+  saveStep(step, answer) {
+    const tipsValues = ['problem', 'price', 'skills', 'competitors']
+    answer ? this.props.setFormStep(tipsValues[step]) : '';
+    let newStep = this.props.tipsActiveStep + 1;
+    this.props.addFormCount(newStep);
+  }
   onSubmit = (values) => {
-    console.log(values)
-    values.tips = {
-      company: this.props.form[0],
-      problem: this.props.form[1],
-      price: this.props.form[2],
-      Skills: this.props.form[3],
-      Competitors: this.props.form[4]
-    }
     this.props.sendTipsForm(values);
   }
   render() {
-    let { form } = this.props;
-    let step = form.length;
+    let { form, tipsActiveStep } = this.props;
     return(
         <div>
           <h2>Test your idea now!</h2>
           <div id="tabcontent">
             <div className="container">
               <div id="tipsForm">
-                <div id="stepLine"> {this.renderStepLine(step)} </div>
-                {this.renderStep(step)}
+                <div id="stepLine"> {this.renderStepLine(tipsActiveStep)} </div>
+                {this.renderStep(tipsActiveStep)}
+                {this.renderForm(tipsActiveStep)}
               </div>
             </div>
           </div>
@@ -195,7 +194,8 @@ function validate(values) { //validate function will automatically be called by 
 function mapStateToProps(state){
   return {
     form: state.state.tipsForm,
-    submit: state.state.submit_tips
+    submit: state.state.submit_tips,
+    tipsActiveStep: state.state.tipsActiveStep,
   };
 }
 
@@ -203,5 +203,5 @@ export default reduxForm({
   validate,
   form: 'tipsForm',
 })(
-  connect(mapStateToProps, { setFormStep, sendTipsForm }) (TipsForm) //combine reduxForm and connect
+  connect(mapStateToProps, { addFormCount, saveCompany, setFormStep, sendTipsForm }) (TipsForm) //combine reduxForm and connect
 );

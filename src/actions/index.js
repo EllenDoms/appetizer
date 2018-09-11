@@ -1,4 +1,4 @@
-import { SET_BLOCK, SET_PHASE, SET_SUBMIT, SET_SUBMIT_WORKSHOP, SET_TIPS_STEP, SET_SUBMIT_TIPS } from './types';
+import { SET_BLOCK, SET_PHASE, SET_SUBMIT, SET_SUBMIT_WORKSHOP, ADD_FORM_COUNT, SET_TIPS_STEP, SET_TIPS_COMPANY, SET_SUBMIT_TIPS } from './types';
 
 import { databaseContactForm, databaseWorkshopForm, databaseTipsForm  } from "../config/firebase";
 
@@ -36,12 +36,25 @@ export function sendWorkshopForm(values) {
   .catch(error => console.log('BAD', error))
 }
 
+export function addFormCount(count) {
+  console.log(count)
+  return {
+    type: ADD_FORM_COUNT,
+    payload: count
+  }
+}
+
 export function setFormStep(step, answer) {
   return {
     type: SET_TIPS_STEP,
-    payload: answer,
-    key: step,
+    payload: step,
+  }
+}
 
+export function saveCompany(answer) {
+  return {
+    type: SET_TIPS_COMPANY,
+    payload: answer,
   }
 }
 
