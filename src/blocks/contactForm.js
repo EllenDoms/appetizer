@@ -41,6 +41,7 @@ class ContactForm extends Component {
     )
   }
   onSubmit = (values) => {
+    console.log(values);
     values.phase = this.props.phase;
     console.log(values)
     this.props.sendContactForm(values);
@@ -49,12 +50,13 @@ class ContactForm extends Component {
     const { handleSubmit, submit, phase  } = this.props;
     if(!submit) {
       return (
-        <form onSubmit={handleSubmit(this.onSubmit)}>
-          <Field label='Name' name='name' type="text" component={this.renderField} />
+        <form onSubmit={handleSubmit(this.onSubmit)} id="formContact" html_id="formContact">
+          <Field label='First Name' classname="half" name='fname' type="text" component={this.renderField} />
+          <Field label='Last Name' classname="half" name='lname' type="text" component={this.renderField} />
           <Field label='Email' classname="half" name='email' type="email" component={this.renderField} />
           <Field label='Phone' classname="half" name='phone' type="text" component={this.renderField} />
           <div className="formItem radio">
-            <label>Preferred method of communication</label>
+            <label id="contact_preference">Preferred method of communication</label>
             <Field name='communication' type='radio' value="Phone" component={this.renderRadio} />
             <Field name='communication' type='radio' value="Email" component={this.renderRadio} />
           </div>
@@ -77,7 +79,8 @@ class ContactForm extends Component {
 function validate(values) { //validate function will automatically be called by redux-form
   const errors = {};
   // validate input (values)
-  if(!values.name) { errors.name = 'We need a name, or at least a nickname.'; }
+  if(!values.fname) { errors.fname = 'We need a first name!'; }
+  if(!values.lname) { errors.lname = 'We need a last name!'; }
   if(!values.email) { errors.email = 'Enter an email, please'; }
   if(!values.phone) { errors.phone = 'Enter a phone number, please'; }
   if(!values.communication) { errors.communication = 'Pick one!'; }
