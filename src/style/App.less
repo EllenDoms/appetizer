@@ -1,5 +1,3 @@
-out:  App.css
-
 @p-turk : #38C3DB;
 @light-1: #F5F5F5;
 @light-2: #EBEDEE;
@@ -239,11 +237,11 @@ li { text-align: left; }
 }
 
 #overlay {
-  height: 100vh;
   width: 100vw;
   display: flex;
   position: fixed;
   z-index: 9;
+  bottom: 0px;
   #popup {
     align-self: flex-end;
     background-color: #FFF;
@@ -877,7 +875,7 @@ form {
   }
   #overlay #popup {
     display: block;
-    .btn { margin: 20px auto; } 
+    .btn { margin: 20px auto; }
   }
   #header {
     #wideNav { display: none; }
