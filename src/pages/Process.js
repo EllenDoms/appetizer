@@ -42,16 +42,21 @@ class Process extends Component {
             </div>
           </div>
           <div className="bottom unfixMobile">
-            <Link smooth to="/process/#phasesBlock" className="btn btn-secondary btn-arrow">Other steps<div className="material-icons">arrow_downward</div></Link>
+            <Link smooth to="/process/#pricingBlock" className="btn btn-secondary btn-arrow">Other steps<div className="material-icons">arrow_downward</div></Link>
+            <div className="bottomArrow left" />
+            <div className="bottomArrow right" />
+          </div>
+        </div>
+        <div id="pricingBlock" className="block light lastBlock">
+          <Pricing />
+          <div className="bottom unfixMobile">
+            <Link smooth to="/process/#phasesBlock" className="btn btn-secondary btn-arrow">In every phase<div className="material-icons">arrow_downward</div></Link>
             <div className="bottomArrow left" />
             <div className="bottomArrow right" />
           </div>
         </div>
         <div id="phasesBlock" className="block light">
           <Phases />
-        </div>
-        <div id="pricingBlock" className="block light lastBlock">
-          <Pricing />
           <Footer page='process' />
         </div>
       </div>

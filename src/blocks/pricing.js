@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 const pricing = [
-  { h3: "A chat with us",
+  { h3: "FREE workshop!",
     title: "You’ll have a better idea of the feasability of your idea!",
     check: [ "Get technical tips", "Quote clear idea" ],
     price: "Totally free!"},
@@ -56,7 +56,7 @@ export default class Pricing extends Component {
   render() {
     return(
       <div>
-        <h2>Deliverables</h2>
+        <h2>Different phases</h2>
         <div className="container flex">
           {this.renderPricing()}
         </div>

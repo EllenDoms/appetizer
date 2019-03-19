@@ -397,7 +397,10 @@ form .formItem.radio .radioItem .value {
 #header #mobile {
   display: none;
 }
-#header img {
+#header #logo {
+  display: contents;
+}
+#header #logo img {
   width: 120px;
   margin-top: 14px;
 }

@@ -13,6 +13,7 @@ import Footer from '../components/footer';
 import FloatingBtn from '../components/floatingBtn';
 import WorkshopCard from '../components/workshop';
 import coaster from '../style/img/coaster.png';
+import Pricing from '../blocks/pricing';
 
 class Home extends Component {
   componentDidMount() {
@@ -36,7 +37,7 @@ class Home extends Component {
       <div id="homePage">
         <div id="topBlock" className="block img">
           <Header />
-          <FloatingBtn />
+          {/* <FloatingBtn /> = telephone number! */}
           <div className="vertCenter container">
             <div className="above">
               <h1>Don’t let <br /><span className="turk"> your dream </span><br /> die on a <br />beer coaster</h1>
@@ -51,26 +52,35 @@ class Home extends Component {
             <div className="bottomArrow right" />
           </div>
         </div>
-        <div id="workshopBlock" className="block light">
-          <WorkshopCard />
-          <div className="bottom">
-            <Link smooth to="/#targetsBlock" className="btn btn-secondary btn-arrow">Learn more<div className="material-icons">arrow_downward</div></Link>
-            <div className="bottomArrow left white" />
-            <div className="bottomArrow right white" />
+        <div id="pricingBlock" className="block light lastBlock">
+          <Pricing />
+          <div className="bottom unfixMobile">
+            <Link smooth to="/process/#workshopBlock" className="btn btn-secondary btn-arrow">Why work with us?<div className="material-icons">arrow_downward</div></Link>
+            <div className="bottomArrow left" />
+            <div className="bottomArrow right" />
           </div>
         </div>
         <div id="targetsBlock" className="block">
           <Targets />
           <div className="bottom">
-            <Link smooth to="/#servicesBlock" className="btn btn-secondary btn-arrow">More information!<div className="material-icons">arrow_downward</div></Link>
+            <Link smooth to="/#workshopBlock" className="btn btn-secondary btn-arrow">Free workshop!<div className="material-icons">arrow_downward</div></Link>
             <div className="bottomArrow left" />
             <div className="bottomArrow right" />
           </div>
         </div>
-        <div id="servicesBlock" className="block light last">
-          <Services />
+        <div id="workshopBlock" className="block light">
+          <WorkshopCard />
+          {/* <div className="bottom">
+            <Link smooth to="/#targetsBlock" className="btn btn-secondary btn-arrow">Learn more<div className="material-icons">arrow_downward</div></Link>
+            <div className="bottomArrow left white" />
+            <div className="bottomArrow right white" />
+          </div> */}
           <Footer page='' />
         </div>
+        {/* <div id="servicesBlock" className="block light last">
+          <Services />
+          <Footer page='' />
+        </div> */}
       </div>
     )
   }

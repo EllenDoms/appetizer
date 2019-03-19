@@ -5,22 +5,22 @@ import { HashLink as Link } from 'react-router-hash-link';
 import { setActivePhase } from '../actions';
 
 const phases = [
-  { title: 'A clear idea',
-    h3: "A kickass pitch!",
-    accent: "3 days",
-    text: "Explaining your idea in a clear way is the first step to attract the right investor or partner."},
-  { title: 'Prototype',
-    h3: "Test your idea",
-    accent: "3 weeks",
-    text: "Test if your concept resonates with the target audience. Only the essentials are built."},
-  { title: 'Early launch',
-    h3: "Minimum viable",
-    accent: "6 weeks",
-    text: "The first profitable version of your application will be launched, with only the most needed features."},
-  { title: 'Go to market',
-    h3: "I want it all",
-    accent: "Custom",
-    text: "A product is never finished. After the first launch we add additional features or tweak existing ones."}];
+  { title: 'Scope meeting',
+    h3: "A clear idea!",
+    accent: "---",
+    text: "Before we can dive into writing code, we discuss what will be done in this phase. That's what we call a scope."},
+  { title: 'Development',
+    h3: "Codemonkeys assemble!",
+    accent: "---",
+    text: "Writing code doesn't mean you have to wait. We keep you up to date with a weekly (virtual) meeting and give you a link to check it out! "},
+  { title: 'Delivery',
+    h3: "3...2...1...Launch!",
+    accent: "---",
+    text: "The scope that was defined in the first step is now online. Our team tests it as much as we can but if any problems might occur, they are still part of this phase!"},
+  { title: 'Next steps',
+    h3: "So what now?",
+    accent: "---",
+    text: "The more people you talk to, the more ideas you'll get. When a phase is finished we can start a new one or you can choose to wait (and gather feedback for example)!"}];
 
 class Phases extends Component {
   renderTabs(activePhase) {
@@ -62,7 +62,7 @@ class Phases extends Component {
     const { activePhase } = this.props;
     return (
       <div>
-        <h2>Bring your idea to life, step by step</h2>
+        <h2>Every phase takes the same steps</h2>
         <ul id="tabs">
           <div className="container">
             {this.renderTabs(activePhase)}
