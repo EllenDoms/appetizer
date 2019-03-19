@@ -16,7 +16,7 @@ export default class Header extends Component {
         <div id="mobile">
           <div className="container"><div id="hamburger" className="material-icons" onClick={() => {this.slideOpen()}}>dehaze</div></div>
           <ul className="inner nav container" onClick={() => {this.slideClosed()}}>
-            <li><Link exact activeClassName="active" to={'/'}> Home</Link></li>
+            <li><Link exact activeClassName="active" to={'/'}>Home</Link></li>
             <li><Link activeClassName="active" to={'/process'}>Process</Link></li>
             <li><Link activeClassName="active" to={'/tips'}>Take the test</Link></li>
             <li><Link activeClassName="active" to={'/contact'}>Contact</Link></li>
@@ -25,10 +25,10 @@ export default class Header extends Component {
         <div className="container">
           <Link id="logo" exact to={'/'}><img src={logoHori} alt="logo" /></Link>
           <ul id="wideNav" className="nav">
-            <li><Link exact activeClassName="active" to={'/'}> Home</Link></li>
-            <li><Link activeClassName="active" to={'/process'}>How it works</Link></li>
+            <li><Link exact activeClassName="active" to={'/'}>Home</Link></li>
+            <li><Link activeClassName="active" to={'/process'}>Process</Link></li>
             <li><Link activeClassName="active" to={'/tips'}>Take the test</Link></li>
-            <li><Link activeClassName="active" to={'/contact'}>Contact us</Link></li>
+            <li><Link activeClassName="active" to={'/contact'}>Contact</Link></li>
           </ul>
         </div>
       </div>
